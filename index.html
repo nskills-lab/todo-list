@@ -10,12 +10,30 @@
 <body>
     <div id="app-wrapper">
     <div id="top-bar">
-        <img id="app-icon" src="../src/images/icons8-todo-list-64.png" alt="">
-        <div id="app-title"> my to-dos</div>
+        <img id="top-bar-icon" src="../src/images/icons8-list-64.png" alt="app icon">
+        <div id="top-bar-title">to-do<p data-end="s"></p></div>
+        <img id="top-bar-add-task-icon" src="../src/images/icons8-plus-48.png"alt="plus sign">
     </div>
 
     <div id="content-wrapper">
-        <div id="left-menu"></div>
+        <div id="sidebar">
+            <div id="left-menu">
+                <ul>
+                    <li id="inbox"><img src="../src/images/icons8-inbox-50.png" alt="inbox">Inbox</li>
+                    <li id="today"><img src="../src/images/icons8-leave-50.png" alt="today's tasks">Today</li>
+                </ul>
+            </div>
+            <div id="projects-container">
+                <div id="projects-top-bar">
+                    <div id="projects-title">Projects</div>
+                    <ul>
+                        <li><img src="../src/images/icons8-plus-24.png" alt=""></li>
+                    </ul>
+                    
+                </div>
+                
+            </div>
+        </div>
         <div id="main-content"></div>
     </div>
 </div>
