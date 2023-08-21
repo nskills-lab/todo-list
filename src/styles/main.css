@@ -130,7 +130,6 @@ li > img {
     flex-direction: column;
     overflow: auto;
 
-
 }
 
 #projects-top-bar{
@@ -160,9 +159,9 @@ li > img {
 
 #task-container{
     position: absolute;
-    width: 30%;
-    height: 40%;
-    top: 40%;
+    width: 25%;
+    height: 30%;
+    top: 20%;
     left: 50%;
     background-color: rgba(214, 211, 209, 0.8); 
     border-radius: 0.7rem;
@@ -173,13 +172,84 @@ li > img {
 }
 
 #task-form{
+    width: 90%;
+    height: 90%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
+    outline: none;
+    padding: 0;
+
 }
 
-#task-form>input, #task-form>select {
+#task-form>* {
     border: none;
     border-radius: 0.2rem;
+    color:#001927;
+    background-color: inherit;
+    font-size: 1rem;
+}
+
+#task-form-name-desc-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 60%;
+
+}
+
+#task-form-name-desc-wrapper>*{
+    color:#001927;
+    background-color: inherit;
+    border: none;
+    outline:  none;
+}
+
+
+
+#task-name{
+    font-size: 1.3rem;
+    flex-grow: 1;
+    
+}
+
+#task-description{
+    flex-grow: 3;
+    font-size: .9rem;
+    resize: none;
+}
+
+#task-form-select-wrapper{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#task-form-select-wrapper>*{
+    font-size: 1rem;
+    color:#001927;
+    background-color: inherit;
+    border: none;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#task-form-select-wrapper>*:hover,
+#task-form-select-wrapper>*:focus{
+    cursor: pointer;
+    outline: none;
+
+}
+
+
+
+#task-form>button{
+    background-color:#00BBBB;
+    width: 20%;
+    height: 10%;
+    align-self: center;
+    font-size: .8rem;
+    font-weight: bold;
+    color: #fff;
 }
 
