@@ -244,7 +244,7 @@ li > img {
 
 
 #task-form>button{
-    background-color:#00BBBB;
+    background-color:#001927;
     width: 20%;
     height: 10%;
     align-self: center;
@@ -252,4 +252,24 @@ li > img {
     font-weight: bold;
     color: #fff;
 }
+
+#add-task-button{
+    position: fixed;
+    bottom: 2rem;
+    right: 3rem;
+    background-color:#001927;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    opacity: 1;
+}
+
+#add-task-button:hover,
+#add-task-button:focus{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
 
