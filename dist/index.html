@@ -34,7 +34,31 @@
                 
             </div>
         </div>
-        <div id="main-content"></div>
+        <div id="main-content">
+            <div id="task-container">
+                <form  id="task-form" novalidate>
+                    <label for="task-name"></label>
+                    <input type="text" name="Task name" id="task-name" placeholder="Task name">
+                    <label for="task-description"></label>
+                    <input type="text"  name="Description" id="task-title" placeholder="Description">
+                    <label for="task-due-date"></label>
+                    <input type="date" name="Date" id="task-due-date">
+                    <label for="task-priority"></label>
+                    <select name="priority" id="task-priority" placeholder="Priority">
+                        <option value="" disabled selected>Priority</option>
+                        <option value="high">High</option>
+                        <option value="medium">Meduim</option>
+                        <option value="low">Low</option>
+                    </select>
+                    <label for="task-project"></label>
+                    <select name="project" id="task-project">
+                        <option value="" disabled selected>Project</option>
+                        <option value="inbox">Inbox</option>
+                    </select>
+                    <button id="form-btn" type="submit">Save</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 </body>
