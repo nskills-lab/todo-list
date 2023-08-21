@@ -66,7 +66,7 @@ p[data-end]::before {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     color: #fff;
     
@@ -75,8 +75,8 @@ p[data-end]::before {
 #left-menu{
     height: 30%;
     width: 90%;
-    background-color: #00BBBB;
-    border-radius: 1.2rem;
+    background-color: #eab308;
+    border-radius: 0.7rem;
     
 }
 
@@ -116,8 +116,9 @@ li > img {
 #projects-container{
     height: 60%;
     width: 90%;
-    background-color: #eab308;
-    border-radius: 1.2rem;
+    background-color: #001927;
+    opacity: .9;
+    border-radius: 0.7rem;
     font-family: 'Barriecito', cursive;
     display: flex;
     flex-direction: column;
@@ -138,13 +139,16 @@ li > img {
 }
 
 #main-content{
-    flex-grow: 4;
-    height: 90%;
+    flex-grow: 7;
+    height: 95%;
     align-self: center;
-    background-color: #d6d3d1;
-    opacity: .6;
+    opacity: .5;
     margin-right: 20px;
     border-radius: 1.2rem;
+    background-image: url("../images/background-image-empty-list.png");
+    background-size: 400px 400px;
+    background-repeat: no-repeat;
+    background-position: center;
 
 }
 
