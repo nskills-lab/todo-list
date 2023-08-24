@@ -34,12 +34,30 @@
             </div>
         </div>
         <div id="main-content" class="empty-task-list-background">
+            <div id="overlay"></div>
             <div id="project-name">Inbox</div>
+            <div id="todo-list-container">
+                <div data-task-id="a" class="task-card">
+                    <div class="checkbox-wrapper">
+                        <label for="task-checkbox"></label>
+                        <input type="radio" id="task-checkbox" name="task-checkbox" value="completed">
+                    </div>
+                    <div class="task-details-wrapper">
+                        <div data-title>Wash dishes</div>
+                        <div data-description>Entire sink</div>
+                        <div due-date>2023-08-24</div>
+                    </div>
+                    <div class="task-action-items">
+                        <button data-task-edit></button>
+                        <button data-task-delete></button>
+                    </div>
+                </div>
+            </div>
             <div id="task-container">
                 <form  id="task-form" novalidate>
                     <div id="task-form-name-desc-wrapper">
                         <label for="task-name"></label>
-                        <input type="text" name="Task name" id="task-name" placeholder="Task name">
+                        <input type="text" name="Name" id="task-name" placeholder="Task name">
                         <label for="task-description"></label>
                         <textarea name="Description" id="task-description" rows="2" cols="10" placeholder="Description"></textarea>
                     </div>
@@ -55,14 +73,31 @@
                         </select>
                         <label for="task-project"></label>
                         <select name="project" id="task-project">
-                            <option value="" disabled selected>Project</option>
-                            <option value="inbox">Inbox</option>
+                            <option value="inbox" selected>Inbox</option>
                         </select>
                     </div>
-                    <button id="form-btn" type="submit">Save</button>
+                    <div id="task-buttons-wrapper">
+                        <button id="form-btn-cancel" type="submit">Cancel</button>
+                        <button id="form-btn-add" type="submit">Add task</button>
+                    </div>
                 </form>
             </div>
             <button id="add-task-button"><img src="../src/images/icons8-plus-24.png" alt=""></button>
+            <template id="task-template">
+                <div class="checkbox-wrapper">
+                    <label for="task-checkbox"></label>
+                    <input type="radio" id="task-checkbox" name="task-checkbox" value="completed">
+                </div>
+                <div class="task-details-wrapper">
+                    <div data-title></div>
+                    <div data-description></div>
+                    <div due-date></div>
+                </div>
+                <div class="task-action-items">
+                    <button data-task-edit></button>
+                    <button data-task-delete></button>
+                </div>
+            </template>
         </div>
     </div>
 </div>
