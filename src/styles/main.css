@@ -9,11 +9,27 @@ body{
     box-sizing: border-box;
 }
 
+#overlay{
+    position: absolute;
+    display: none ;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .75);
+    z-index: 2
+}
+
+#task-container.active, 
+#overlay.active{
+    display: block;
+}
+
 @font-face {
     font-family: 'Barriecito';
     src:  url('Barriecito-Regular.ttf') format('truetype');
 
-  }
+}
 
 #app-wrapper{
     width: 100vw;
@@ -55,6 +71,7 @@ p[data-end]::before {
     margin-left: 20px;
     width: 2.3rem;
 }
+
 #top-bar-add-task-icon{
     margin-left: auto;
     margin-right: 20px;
@@ -149,7 +166,9 @@ li > img {
     align-self: center;
     margin-right: 20px;
     border-radius: 1.2rem;
-    
+    display: flex;
+    flex-direction: column;
+   
 }
 
 .empty-task-list-background{
@@ -159,6 +178,68 @@ li > img {
     background-position: center;
 }
 
+#todo-list-container{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#project-name{
+    font-family: 'Barriecito', cursive;
+    color:#001927;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    width: 50%;
+}
+
+.task-card{
+    width: 50%;
+    border-bottom-color: #001927;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    font-family: 'Barriecito', cursive;
+    font-size: .9rem;
+    display: flex;
+    line-height: 1.3rem;
+}
+
+div[data-priority-color]{
+    background-color: red;
+    width: 10px;
+}
+
+#task-checkbox:hover{
+    cursor: pointer;
+}
+
+#task-checkbox{
+    accent-color: #001927;
+}
+
+div[data-description],
+div[due-date]{
+    font-size: .7rem;
+    color: #001927;
+    opacity: .8;
+}
+
+.task-action-items{
+    margin-left: auto;
+}
+
+.task-action-items>button{
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
+
+.task-action-items>button:hover{
+    cursor: pointer;
+    background-color: rgb(233, 228, 224);
+    border-radius: .2rem;
+}
 
 #task-container{
     position: absolute;
@@ -169,31 +250,7 @@ li > img {
     left: 50%;
     background-color: rgb(233, 228, 224);
     border-radius: 0.7rem;
-    z-index: 2;
-
-}
-
-#overlay{
-    position: absolute;
-    display: none ;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, .75);
-    z-index: 1
-}
-
-#task-container.active, 
-#overlay.active{
-    display: block;
-}
-
-#project-name{
-    font-family: 'Barriecito', cursive;
-    color:#001927;
-    font-size: 1.6rem;
-    font-weight: bold;
+    z-index: 3;
 
 }
 

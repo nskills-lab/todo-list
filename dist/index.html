@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../src/styles/main.css">
 </head>
 <body>
+    <div id="overlay"></div>
     <div id="app-wrapper">
     <div id="top-bar">
         <img id="top-bar-icon" src="../src/images/icons8-list-64.png" alt="app icon">
@@ -34,22 +35,28 @@
             </div>
         </div>
         <div id="main-content" class="empty-task-list-background">
-            <div id="overlay"></div>
-            <div id="project-name">Inbox</div>
             <div id="todo-list-container">
+                <div id="project-name">Inbox</div>
                 <div data-task-id="a" class="task-card">
+                    <div data-priority-color></div>
                     <div class="checkbox-wrapper">
                         <label for="task-checkbox"></label>
                         <input type="radio" id="task-checkbox" name="task-checkbox" value="completed">
                     </div>
                     <div class="task-details-wrapper">
                         <div data-title>Wash dishes</div>
-                        <div data-description>Entire sink</div>
                         <div due-date>2023-08-24</div>
                     </div>
                     <div class="task-action-items">
-                        <button data-task-edit></button>
-                        <button data-task-delete></button>
+                        <button data-task-info>      
+                            <img src="../src/images/icons8-ellipsis-24.png" alt=""> 
+                        </button>
+                        <button data-task-edit>
+                            <img src="../src/images/icons8-edit.svg" alt="">
+                        </button>
+                        <button data-task-delete>
+                            <img src="../src/images/icons8-trash.svg" alt="">
+                        </button>
                     </div>
                 </div>
             </div>
@@ -84,18 +91,25 @@
             </div>
             <button id="add-task-button"><img src="../src/images/icons8-plus-24.png" alt=""></button>
             <template id="task-template">
+                <div data-priority-color></div>
                 <div class="checkbox-wrapper">
                     <label for="task-checkbox"></label>
                     <input type="radio" id="task-checkbox" name="task-checkbox" value="completed">
                 </div>
                 <div class="task-details-wrapper">
                     <div data-title></div>
-                    <div data-description></div>
                     <div due-date></div>
                 </div>
                 <div class="task-action-items">
-                    <button data-task-edit></button>
-                    <button data-task-delete></button>
+                    <button data-task-info>      
+                        <img src="../src/images/icons8-ellipsis-24.png" alt="task details icon"> 
+                    </button>
+                    <button data-task-edit>
+                        <img src="../src/images/icons8-edit.svg" alt="edit task icon">
+                    </button>
+                    <button data-task-delete>
+                        <img src="../src/images/icons8-trash.svg" alt="delete task icon">
+                    </button>
                 </div>
             </template>
         </div>
