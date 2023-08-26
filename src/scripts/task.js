@@ -8,6 +8,10 @@ export default class Task {
     this._project = project;
   }
 
+  get id() {
+    return this._id;
+  }
+
   set name(name) {
     this._name = name;
   }

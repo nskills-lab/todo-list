@@ -91,25 +91,33 @@
             </div>
             <button id="add-task-button"><img src="../src/images/icons8-plus-24.png" alt=""></button>
             <template id="task-template">
-                <div data-priority-color></div>
-                <div class="checkbox-wrapper">
-                    <label for="task-checkbox"></label>
-                    <input type="radio" id="task-checkbox" name="task-checkbox" value="completed">
+                <div data-task-id class="task-card">
+                    <div data-priority-color></div>
+                    <div class="checkbox-wrapper">
+                        <label for="task-checkbox"></label>
+                        <input type="radio" id="task-checkbox" name="task-checkbox" value="completed">
+                    </div>
+                    <div class="task-details-wrapper">
+                        <div data-title></div>
+                        <div due-date></div>
+                    </div>
+                    <div class="task-action-items">
+                        <button data-task-info>      
+                            <img src="../src/images/icons8-ellipsis-24.png" alt="task details icon"> 
+                        </button>
+                        <button data-task-edit>
+                            <img src="../src/images/icons8-edit.svg" alt="edit task icon">
+                        </button>
+                        <button data-task-delete>
+                            <img src="../src/images/icons8-trash.svg" alt="delete task icon">
+                        </button>
+                    </div>
                 </div>
-                <div class="task-details-wrapper">
-                    <div data-title></div>
-                    <div due-date></div>
-                </div>
-                <div class="task-action-items">
-                    <button data-task-info>      
-                        <img src="../src/images/icons8-ellipsis-24.png" alt="task details icon"> 
-                    </button>
-                    <button data-task-edit>
-                        <img src="../src/images/icons8-edit.svg" alt="edit task icon">
-                    </button>
-                    <button data-task-delete>
-                        <img src="../src/images/icons8-trash.svg" alt="delete task icon">
-                    </button>
+            </template>
+
+            <template>
+                <div id="task-info" class="task-info-popup">
+                    div
                 </div>
             </template>
         </div>
