@@ -12,13 +12,15 @@ export function createTaskNode(task) {
   );
   let taskToRender;
   if (elementExists) {
+    taskToRender = elementExists;
   } else {
     taskToRender = template.content.cloneNode(true);
     const id = taskToRender.querySelector("[data-task-id]");
     id.dataset.taskId = task.id;
-    addOrUpdateTaskToRender(taskToRender, task);
-    return taskToRender;
   }
+
+  addOrUpdateTaskToRender(taskToRender, task);
+  return taskToRender;
 }
 
 function addOrUpdateTaskToRender(taskToRender, task) {
@@ -26,9 +28,15 @@ function addOrUpdateTaskToRender(taskToRender, task) {
   const priority = taskToRender.querySelector("[data-priority-color]");
   priority.style.backgroundColor = color;
 
+  const project = taskToRender.querySelector("[data-project]");
+  project.dataset.dataProject = task.project;
+
   const title = taskToRender.querySelector("[data-title]");
   title.innerText = task.name;
 
-  const date = taskToRender.querySelector("[due-date]");
+  const details = taskToRender.querySelector("[data-details]");
+  details.innerText = task.description;
+
+  const date = taskToRender.querySelector("[data-due-date]");
   date.innerText = task.dueDate;
 }
