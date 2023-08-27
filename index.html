@@ -45,12 +45,10 @@
                     </div>
                     <div class="task-details-wrapper">
                         <div data-title>Wash dishes</div>
-                        <div due-date>2023-08-24</div>
+                        <div data-details>Entire sink</div>
+                        <div data-due-date>2023-08-24</div>
                     </div>
                     <div class="task-action-items">
-                        <button data-task-info>      
-                            <img src="../src/images/icons8-ellipsis-24.png" alt=""> 
-                        </button>
                         <button data-task-edit>
                             <img src="../src/images/icons8-edit.svg" alt="">
                         </button>
@@ -61,7 +59,7 @@
                 </div>
             </div>
             <div id="task-container">
-                <form  id="task-form" novalidate>
+                <form id="task-form" novalidate>
                     <div id="task-form-name-desc-wrapper">
                         <label for="task-name"></label>
                         <input type="text" name="Name" id="task-name" placeholder="Task name">
@@ -84,7 +82,7 @@
                         </select>
                     </div>
                     <div id="task-buttons-wrapper">
-                        <button id="form-btn-cancel" type="submit">Cancel</button>
+                        <input type="button" id="form-btn-cancel" value="Cancel"></input>
                         <button id="form-btn-add" type="submit">Add task</button>
                     </div>
                 </form>
@@ -97,14 +95,12 @@
                         <label for="task-checkbox"></label>
                         <input type="radio" id="task-checkbox" name="task-checkbox" value="completed">
                     </div>
-                    <div class="task-details-wrapper">
+                    <div data-project class="task-details-wrapper">
                         <div data-title></div>
-                        <div due-date></div>
+                        <div data-details></div>
+                        <div data-due-date></div>
                     </div>
                     <div class="task-action-items">
-                        <button data-task-info>      
-                            <img src="../src/images/icons8-ellipsis-24.png" alt="task details icon"> 
-                        </button>
                         <button data-task-edit>
                             <img src="../src/images/icons8-edit.svg" alt="edit task icon">
                         </button>
