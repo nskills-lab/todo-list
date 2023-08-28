@@ -24,14 +24,17 @@
                 </ul>
             </div>
             <div id="projects-container">
-                <div id="projects-top-bar">
-                    <div id="projects-title">Projects</div>
-                    <ul>
-                        <li><img src="../src/images/icons8-plus-24.png" alt=""></li>
-                    </ul>
-                    
+                <div id="projects-top-bar">Projects</div>
+                <div id="add-project-wrapper" class="projects-content">
+                    <div id="new-project">+ New Project</div>
+                    <div id="new-project-popup" class="projects-content">
+                        <input id="project-name-input" type="text">
+                        <div id="project-buttons-wrapper" >
+                            <button id="project-add">Add</button>
+                            <button id="project-cancel">Cancel</button>
+                        </div>
+                    </div>
                 </div>
-                
             </div>
         </div>
         <div id="main-content" class="empty-task-list-background">
@@ -58,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <div id="task-container">
+            <div id="form-container">
                 <form id="task-form" novalidate>
                     <div id="task-form-name-desc-wrapper">
                         <label for="task-name"></label>
@@ -111,11 +114,6 @@
                 </div>
             </template>
 
-            <template>
-                <div id="task-info" class="task-info-popup">
-                    div
-                </div>
-            </template>
         </div>
     </div>
 </div>

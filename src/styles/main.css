@@ -21,7 +21,7 @@ body{
     z-index: 2
 }
 
-#task-container.active, 
+#form-container.active, 
 #overlay.active{
     display: block;
 }
@@ -99,7 +99,6 @@ p[data-end]::before {
 #left-menu{
     height: 30%;
     width: 90%;
-
     background-color: #eab308;
     border-radius: 0.7rem;
     
@@ -119,7 +118,6 @@ ul>li{
     list-style: none;
     cursor: pointer;
     font-size: 1.2rem;
-
 }
 
 #inbox{
@@ -148,18 +146,88 @@ li > img {
     display: flex;
     flex-direction: column;
     overflow: auto;
-
 }
 
 #projects-top-bar{
+    font-size: 1.2rem;
     display: flex;
-    justify-content: space-between;
+    padding-top: 1rem;
+    padding-left: 2.3rem;
+    align-items: center;
 }
 
-#projects-title{
-    font-size: 1.2rem;
-    margin-left: 2rem;
-    margin-top: 1rem;
+#new-project{
+    display: flex;
+    text-align:left;
+    
+}
+
+#new-project.inactive{
+    display: none;
+}
+
+.projects-content{
+    align-self: center;
+    width: 90%;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    border-radius: .5rem;
+
+}
+
+.projects-content:hover {
+    cursor: pointer;
+    background-color: #3b3f42;
+}
+
+#add-project-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+#new-project-popup{
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+ #new-project-popup.active{
+    display: flex;
+}
+
+#project-name-input{
+    width: 80%;
+    height: 25px;
+    border-radius: .2rem;
+    border: none;
+    outline: none;
+    font-family: inherit;
+}
+
+#project-buttons-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#project-buttons-wrapper>button{
+    background-color:#eab308;
+    color:#001927;
+    font-family: inherit;
+    border: none;
+    outline: none;
+    font-size: .9rem;
+    border-radius: .2rem;
+    width: 55px;
+    height: 20px;
+    margin-top: .4rem;
+    margin-right: .4rem;
+}
+
+#project-buttons-wrapper>button:hover{
+    cursor: pointer;
 }
 
 #main-content{
@@ -249,7 +317,7 @@ div[data-due-date]{
     border-radius: .2rem;
 }
 
-#task-container{
+#form-container{
     position: absolute;
     display: none ;
     width: 25%;
