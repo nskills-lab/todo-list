@@ -25,12 +25,22 @@
             </div>
             <div id="projects-container">
                 <div id="projects-top-bar">Projects</div>
-                <div id="add-project-wrapper" class="projects-content">
-                    <div id="new-project">+ New Project</div>
-                    <div id="new-project-popup" class="projects-content">
-                        <input id="project-name-input" type="text">
-                        <div id="project-buttons-wrapper" >
-                            <button id="project-add">Add</button>
+                <div data-project-id class="project-card projects-content project-selected">
+                    <div data-project-title> College</div>
+                    <div class="project-action-items">
+                        <button data-project-edit>
+                            <img src="../src/images/icons8-edit-light.svg" alt="edit project icon">
+                        </button>
+                        <button data-project-delete>  
+                            <img src="../src/images/icons8-x-48.png" alt="delete project icon"></button>
+                    </div>
+                </div>
+                <div id="add-project-wrapper" >
+                    <div id="new-project-div" class="projects-content project-selected">+ New Project</div>
+                    <div id="new-project-popup" >
+                        <input id="project-name-input" type="text" class="projects-content">
+                        <div id="project-buttons-wrapper">
+                            <button id="project-save">Save</button>
                             <button id="project-cancel">Cancel</button>
                         </div>
                     </div>
@@ -65,7 +75,7 @@
                 <form id="task-form" novalidate>
                     <div id="task-form-name-desc-wrapper">
                         <label for="task-name"></label>
-                        <input type="text" name="Name" id="task-name" placeholder="Task name">
+                        <input type="text" name="Name" id="task-name" placeholder="Task name" required>
                         <label for="task-description"></label>
                         <textarea name="Description" id="task-description" rows="2" cols="10" placeholder="Description"></textarea>
                     </div>
@@ -113,7 +123,17 @@
                     </div>
                 </div>
             </template>
-
+            <template id="project-template">
+                <div data-project-id class="project-card">
+                    <div data-project-title></div>
+                    <div class="task-action-items">
+                        <button data-project-edit>
+                            <img src="../src/images/icons8-edit.svg" alt="edit task icon">
+                        </button>
+                        <button data-task-delete> X </button>
+                    </div>
+                </div>
+            </template>
         </div>
     </div>
 </div>

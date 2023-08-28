@@ -156,26 +156,27 @@ li > img {
     align-items: center;
 }
 
-#new-project{
+#new-project-div{
     display: flex;
-    text-align:left;
-    
+    align-items: center;
+    padding-left: .5rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }
 
-#new-project.inactive{
+#new-project-div.inactive{
     display: none;
 }
 
 .projects-content{
     align-self: center;
-    width: 90%;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+    width: 80%;
+    height: 25px;
+    margin-top: .5rem;
     border-radius: .5rem;
-
 }
 
-.projects-content:hover {
+.project-selected:hover {
     cursor: pointer;
     background-color: #3b3f42;
 }
@@ -187,20 +188,16 @@ li > img {
 
 #new-project-popup{
     display: none;
+}
+
+ #new-project-popup.active{
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
 
-
- #new-project-popup.active{
-    display: flex;
-}
-
 #project-name-input{
-    width: 80%;
-    height: 25px;
-    border-radius: .2rem;
     border: none;
     outline: none;
     font-family: inherit;
@@ -442,4 +439,35 @@ div[data-due-date]{
     transform: scale(1.1);
 }
 
+.project-card{
+    display: flex;
+    align-items: center;
+}
 
+.project-action-items{
+    margin-left: auto;
+}
+
+.project-action-items > button{
+    background-color: #001927;
+    outline: none;
+    border: none
+}
+
+.project-action-items > button>img{
+    width: 20px;
+}
+
+.project-action-items > button>img:hover{
+    cursor: pointer;
+    background-color: #3b3f42;
+    
+}
+.project-card:hover {
+    background-color: #3b3f42;
+}
+div[data-project-title]{
+    padding-left: .5rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}

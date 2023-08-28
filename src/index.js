@@ -6,7 +6,7 @@ const taskForm = document.querySelector("#task-form");
 const overlay = document.querySelector("#overlay");
 const todoListContainer = document.querySelector("#todo-list-container");
 const cancelButton = document.querySelector("#form-btn-cancel");
-const newProject = document.querySelector("#new-project");
+const newProject = document.querySelector("#new-project-div");
 const newProjectPopup = document.querySelector("#new-project-popup");
 const newProjectButtons = document.querySelector("#project-buttons-wrapper");
 
@@ -72,7 +72,7 @@ newProject.addEventListener("click", (e) => {
 });
 
 newProjectButtons.addEventListener("click", (e) => {
-  if (e.target.matches("#project-add")) {
+  if (e.target.matches("#project-save")) {
     console.log("add project!");
   }
   if (e.target.matches("#project-cancel")) {
