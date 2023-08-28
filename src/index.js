@@ -45,3 +45,20 @@ todoListContainer.addEventListener("click", (e) => {
     overlay.classList.toggle("active");
   }
 });
+
+document.addEventListener("change", (e) => {
+  if (e.target.closest("input").matches("#task-checkbox")) {
+    const task = e.target.closest("div[data-task-id]");
+    const title = e.target
+      .closest("div[data-task-id]")
+      .querySelector("[data-title]");
+
+    if (title.style.textDecoration === "line-through") {
+      title.style.textDecoration = "";
+      task.style.opacity = 1;
+      return;
+    }
+    title.style.textDecoration = "line-through";
+    task.style.opacity = 0.5;
+  }
+});

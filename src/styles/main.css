@@ -211,14 +211,15 @@ li > img {
 div[data-priority-color]{
     background-color: red;
     min-width: 10px;
+
 }
 
 #task-checkbox:hover{
     cursor: pointer;
 }
 
-#task-checkbox{
-    accent-color: #001927;
+#task-checkbox:checked{
+   accent-color: #001927;
 }
 
 div[data-details],
@@ -332,6 +333,7 @@ div[data-due-date]{
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 #task-buttons-wrapper>*{
