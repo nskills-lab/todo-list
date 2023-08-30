@@ -25,16 +25,6 @@
             </div>
             <div id="projects-container">
                 <div id="projects-top-bar">Projects</div>
-                <div data-project-id class="project-card projects-content project-selected">
-                    <div data-project-title> College</div>
-                    <div class="project-action-items">
-                        <button data-project-edit>
-                            <img src="../src/images/icons8-edit-light.svg" alt="edit project icon">
-                        </button>
-                        <button data-project-delete>  
-                            <img src="../src/images/icons8-x-48.png" alt="delete project icon"></button>
-                    </div>
-                </div>
                 <div id="add-project-wrapper" >
                     <div id="new-project-div" class="projects-content project-selected">+ New Project</div>
                     <div id="new-project-popup" >
@@ -124,14 +114,9 @@
                 </div>
             </template>
             <template id="project-template">
-                <div data-project-id class="project-card">
+                <div data-project-id class="project-card projects-content project-selected">
                     <div data-project-title></div>
-                    <div class="task-action-items">
-                        <button data-project-edit>
-                            <img src="../src/images/icons8-edit.svg" alt="edit task icon">
-                        </button>
-                        <button data-task-delete> X </button>
-                    </div>
+                    <div data-project-delete> X </div>
                 </div>
             </template>
         </div>
