@@ -1,5 +1,6 @@
 import { createTask, clearForm, prefillForm } from "./scripts/form.js";
 import { createTaskNode } from "./scripts/todoList.js";
+import { createProjectNode } from "./scripts/projects.js";
 const formContainer = document.querySelector("#form-container");
 const newTaskButton = document.querySelector("#add-task-button");
 const taskForm = document.querySelector("#task-form");
@@ -9,6 +10,8 @@ const cancelButton = document.querySelector("#form-btn-cancel");
 const newProject = document.querySelector("#new-project-div");
 const newProjectPopup = document.querySelector("#new-project-popup");
 const newProjectButtons = document.querySelector("#project-buttons-wrapper");
+const newProjectInput = document.querySelector("#project-name-input");
+const projectContainer = document.querySelector("#projects-container");
 
 newTaskButton.addEventListener("click", () => {
   formContainer.classList.toggle("active");
@@ -73,12 +76,22 @@ newProject.addEventListener("click", (e) => {
 
 newProjectButtons.addEventListener("click", (e) => {
   if (e.target.matches("#project-save")) {
-    console.log("add project!");
+    const newProjectTitle = newProjectInput.value.trim();
+    if (!newProjectTitle) return;
+    const project = createProjectNode(newProjectTitle);
+    projectContainer.appendChild(project);
   }
   if (e.target.matches("#project-cancel")) {
-    console.log("cancel adding project");
   }
 
+  newProjectInput.value = "";
   newProject.classList.toggle("inactive");
   newProjectPopup.classList.toggle("active");
+});
+
+projectContainer.addEventListener("click", (e) => {
+  if (e.target.matches("[data-project-delete]")) {
+    const projectToDelete = e.target.closest("div[data-project-id]");
+    projectToDelete.remove();
+  }
 });

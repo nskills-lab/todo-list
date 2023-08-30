@@ -1,3 +1,8 @@
+*,
+*::after {
+    box-sizing: border-box;
+}
+
 body{
     margin: 0;
     background-color:#fff;
@@ -5,10 +10,6 @@ body{
 
 }
 
-*,
-*::after {
-    box-sizing: border-box;
-}
 
 #overlay{
     position: absolute;
@@ -153,6 +154,7 @@ li > img {
     display: flex;
     padding-top: 1rem;
     padding-left: 2.3rem;
+    padding-bottom: 1rem;
     align-items: center;
 }
 
@@ -174,11 +176,6 @@ li > img {
     height: 25px;
     margin-top: .5rem;
     border-radius: .5rem;
-}
-
-.project-selected:hover {
-    cursor: pointer;
-    background-color: #3b3f42;
 }
 
 #add-project-wrapper{
@@ -225,6 +222,36 @@ li > img {
 
 #project-buttons-wrapper>button:hover{
     cursor: pointer;
+}
+
+.project-card{
+    display: flex;
+    align-items: center;
+}
+
+
+div[data-project-delete]{
+    margin-left: auto;
+    padding-right: .5rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    color: #001927;
+}
+
+div[data-project-delete]:hover{
+    color: #fff;
+}
+
+
+div[data-project-title]{
+    padding-left: .5rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+.project-selected:hover {
+    cursor: pointer;
+    background-color: #3b3f42;
 }
 
 #main-content{
@@ -439,35 +466,3 @@ div[data-due-date]{
     transform: scale(1.1);
 }
 
-.project-card{
-    display: flex;
-    align-items: center;
-}
-
-.project-action-items{
-    margin-left: auto;
-}
-
-.project-action-items > button{
-    background-color: #001927;
-    outline: none;
-    border: none
-}
-
-.project-action-items > button>img{
-    width: 20px;
-}
-
-.project-action-items > button>img:hover{
-    cursor: pointer;
-    background-color: #3b3f42;
-    
-}
-.project-card:hover {
-    background-color: #3b3f42;
-}
-div[data-project-title]{
-    padding-left: .5rem;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-}
