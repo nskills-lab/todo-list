@@ -118,7 +118,7 @@ ul>li{
     font-family: 'Barriecito', cursive;
     list-style: none;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 #inbox{
@@ -141,7 +141,7 @@ li > img {
     height: 60%;
     width: 90%;
     background-color: #001927;
-    opacity: .9;
+   
     border-radius: 0.7rem;
     font-family: 'Barriecito', cursive;
     display: flex;
@@ -150,7 +150,7 @@ li > img {
 }
 
 #projects-top-bar{
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     display: flex;
     padding-top: 1rem;
     padding-left: 2.3rem;
@@ -164,11 +164,15 @@ li > img {
     padding-left: .5rem;
     padding-top: .5rem;
     padding-bottom: .5rem;
+    color:#eab308;
 }
 
-#new-project-div.inactive{
+#new-project-div.inactive,
+.task-card.inactive{
     display: none;
 }
+
+
 
 .projects-content{
     align-self: center;
@@ -198,6 +202,7 @@ li > img {
     border: none;
     outline: none;
     font-family: inherit;
+    border-radius: .2rem;
 }
 
 #project-buttons-wrapper{
@@ -252,6 +257,7 @@ div[data-project-title]{
 .project-selected:hover {
     cursor: pointer;
     background-color: #3b3f42;
+    border-radius: .2rem;
 }
 
 #main-content{
@@ -301,7 +307,6 @@ div[data-project-title]{
 }
 
 div[data-priority-color]{
-    background-color: red;
     min-width: 10px;
 
 }
@@ -404,7 +409,7 @@ div[data-due-date]{
     justify-content: space-evenly;
 }
 
-#task-form-select-wrapper>*{
+#task-form-select-wrapper > *{
     font-size: .9rem;
     color:#001927;
     background-color: inherit;
@@ -412,6 +417,10 @@ div[data-due-date]{
     justify-content: center;
     align-items: center;
 
+}
+
+#task-project{
+    color:#001927;
 }
 
 #task-form-select-wrapper>*:hover,
@@ -431,18 +440,21 @@ div[data-due-date]{
 #task-buttons-wrapper>*{
     background-color:#001927;
     width: 18%;
-    height: 120%;
+    height: 25px;
     font-size: .8rem;
     font-weight: bold;
     color: #fff;
     margin-left: .5rem;
     border-radius: .3rem;
+    outline: none;
+    border: none;
+
 }
 
 #task-buttons-wrapper>button:hover,
 #task-buttons-wrapper>button:focus{
     cursor: pointer;
-    outline: none;
+
 }
 
 

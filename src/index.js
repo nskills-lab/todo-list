@@ -1,5 +1,10 @@
-import { createTask, clearForm, prefillForm } from "./scripts/form.js";
-import { createTaskNode } from "./scripts/todoList.js";
+import {
+  createTask,
+  clearForm,
+  prefillForm,
+  addFormProjects,
+} from "./scripts/form.js";
+import { createTaskNode, loadCurrentProjectTasks } from "./scripts/todoList.js";
 import { createProjectNode } from "./scripts/projects.js";
 const formContainer = document.querySelector("#form-container");
 const newTaskButton = document.querySelector("#add-task-button");
@@ -12,10 +17,17 @@ const newProjectPopup = document.querySelector("#new-project-popup");
 const newProjectButtons = document.querySelector("#project-buttons-wrapper");
 const newProjectInput = document.querySelector("#project-name-input");
 const projectContainer = document.querySelector("#projects-container");
+const currentProject = document.querySelector("#project-name");
+const sidebar = document.querySelector("#sidebar");
 
 newTaskButton.addEventListener("click", () => {
   formContainer.classList.toggle("active");
   overlay.classList.toggle("active");
+  const projects = [
+    ...projectContainer.querySelectorAll("div[data-project-title]"),
+  ];
+  const projectTitles = projects.map((element) => element.innerText);
+  addFormProjects(projectTitles);
   clearForm();
 });
 
@@ -30,7 +42,7 @@ taskForm.addEventListener("submit", (e) => {
   if (!existingTaskId) {
     todoListContainer.appendChild(taskNode);
   }
-
+  loadCurrentProjectTasks(currentProject.innerText);
   clearForm();
 });
 
@@ -89,9 +101,24 @@ newProjectButtons.addEventListener("click", (e) => {
   newProjectPopup.classList.toggle("active");
 });
 
-projectContainer.addEventListener("click", (e) => {
-  if (e.target.matches("[data-project-delete]")) {
-    const projectToDelete = e.target.closest("div[data-project-id]");
+sidebar.addEventListener("click", (e) => {
+  const element = e.target;
+
+  if (element.matches("[data-project-delete]")) {
+    const projectToDelete = element.closest("div[data-project-id]");
     projectToDelete.remove();
+    return;
   }
+
+  if (element.matches(".project-card")) {
+    currentProject.innerText = element.querySelector(
+      "div[data-project-title]"
+    ).innerText;
+  }
+
+  if (element.matches("[data-project-title]") || element.matches("li")) {
+    currentProject.innerText = element.innerText;
+  }
+
+  loadCurrentProjectTasks(currentProject.innerText);
 });

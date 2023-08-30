@@ -53,6 +53,15 @@ export function prefillForm(taskId) {
     .dataset.dataProject.trim();
 }
 
+export function addFormProjects(titles) {
+  titles.forEach((title) => {
+    let option = document.createElement("option");
+    option.text = title;
+    option.value = title;
+    projectElement.add(option);
+  });
+}
+
 function* idGenerator() {
   let count = 1;
   while (true) {

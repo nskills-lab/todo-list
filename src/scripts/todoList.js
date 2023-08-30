@@ -23,13 +23,27 @@ export function createTaskNode(task) {
   return taskToRender;
 }
 
+export function loadCurrentProjectTasks(currentProjectTitle) {
+  const tasks = [...todoListContainer.querySelectorAll(".task-card")];
+  console.log(currentProjectTitle);
+  tasks.forEach((element) => {
+    console.log(element.dataset.project.toLowerCase());
+    if (
+      element.dataset.project.toLowerCase() !==
+      currentProjectTitle.toLowerCase()
+    ) {
+      element.classList.toggle("inactive");
+    }
+  });
+}
+
 function addOrUpdateTaskToRender(taskToRender, task) {
   const color = PRIORITY_MAP.get(task.priority) ?? "green";
   const priority = taskToRender.querySelector("[data-priority-color]");
   priority.style.backgroundColor = color;
 
-  const project = taskToRender.querySelector("[data-project]");
-  project.dataset.dataProject = task.project;
+  const project = taskToRender.querySelector("[data-task-id]");
+  project.dataset.project = task.project;
 
   const title = taskToRender.querySelector("[data-title]");
   title.innerText = task.name;

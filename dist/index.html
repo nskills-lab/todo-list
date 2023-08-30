@@ -19,14 +19,14 @@
         <div id="sidebar">
             <div id="left-menu">
                 <ul>
-                    <li id="inbox"><img src="../src/images/icons8-inbox-50.png" alt="inbox">Inbox</li>
-                    <li id="today"><img src="../src/images/icons8-leave-50.png" alt="today's tasks">Today</li>
+                    <li id="inbox" class="project-selected"><img src="../src/images/icons8-inbox-50.png" alt="inbox">Inbox</li>
+                    <li id="today" class="project-selected"><img src="../src/images/icons8-leave-50.png" alt="today's tasks">Today</li>
                 </ul>
             </div>
             <div id="projects-container">
                 <div id="projects-top-bar">Projects</div>
                 <div id="add-project-wrapper" >
-                    <div id="new-project-div" class="projects-content project-selected">+ New Project</div>
+                    <div id="new-project-div" class="projects-content project-selected">+ Create Project </div>
                     <div id="new-project-popup" >
                         <input id="project-name-input" type="text" class="projects-content">
                         <div id="project-buttons-wrapper">
@@ -40,26 +40,7 @@
         <div id="main-content" class="empty-task-list-background">
             <div id="todo-list-container">
                 <div id="project-name">Inbox</div>
-                <div data-task-id="a" class="task-card">
-                    <div data-priority-color></div>
-                    <div class="checkbox-wrapper">
-                        <label for="task-checkbox"></label>
-                        <input type="checkbox" id="task-checkbox" name="task-checkbox" value="completed">
-                    </div>
-                    <div class="task-details-wrapper">
-                        <div data-title>Wash dishes</div>
-                        <div data-details>Entire sink</div>
-                        <div data-due-date>2023-08-24</div>
-                    </div>
-                    <div class="task-action-items">
-                        <button data-task-edit>
-                            <img src="../src/images/icons8-edit.svg" alt="">
-                        </button>
-                        <button data-task-delete>
-                            <img src="../src/images/icons8-trash.svg" alt="">
-                        </button>
-                    </div>
-                </div>
+
             </div>
             <div id="form-container">
                 <form id="task-form" novalidate>
@@ -72,17 +53,20 @@
                     <div id="task-form-select-wrapper">
                         <label for="task-due-date"></label>
                         <input type="date" name="Date" id="task-due-date">
-                        <label for="task-priority"></label>
-                        <select name="priority" id="task-priority" placeholder="Priority">
+
+                        <label for="task-priority" ></label>
+                        <select name="priority" id="task-priority" class="form-select-option">
                             <option value="" disabled selected>Priority</option>
-                            <option value="high">🔴 P1</option>
+                            <option value="high" >🔴 P1</option>
                             <option value="medium">🟡 P2</option>
                             <option value="low">🟢 P3</option>
                         </select>
+
                         <label for="task-project"></label>
                         <select name="project" id="task-project">
-                            <option value="inbox" selected>Inbox</option>
+                            <option value="inbox" >Inbox</option>
                         </select>
+
                     </div>
                     <div id="task-buttons-wrapper">
                         <input type="button" id="form-btn-cancel" value="Cancel"></input>
