@@ -25,15 +25,37 @@ export function createTaskNode(task) {
 
 export function loadCurrentProjectTasks(currentProjectTitle) {
   const tasks = [...todoListContainer.querySelectorAll(".task-card")];
-  console.log(currentProjectTitle);
+
   tasks.forEach((element) => {
-    console.log(element.dataset.project.toLowerCase());
+    const classes = [...element.classList];
+    console.log(classes);
     if (
-      element.dataset.project.toLowerCase() !==
+      element.dataset.project.toLowerCase() ===
       currentProjectTitle.toLowerCase()
     ) {
-      element.classList.toggle("inactive");
+      if (classes.includes("inactive")) {
+        element.classList.remove("inactive");
+      }
+    } else {
+      if (!classes.includes("inactive")) {
+        element.classList.toggle("inactive");
+      }
     }
+  });
+}
+
+export function deleteProjectTasks(projectTitle) {
+  const tasksToDelete = getProjectTasks(projectTitle);
+  tasksToDelete.forEach((element) => {
+    element.remove();
+  });
+}
+
+function getProjectTasks(projectTitle) {
+  const tasks = [...todoListContainer.querySelectorAll(".task-card")];
+
+  return tasks.filter((element) => {
+    element.dataset.project.toLowerCase() === projectTitle.toLowerCase();
   });
 }
 

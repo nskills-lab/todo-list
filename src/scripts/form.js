@@ -54,7 +54,15 @@ export function prefillForm(taskId) {
 }
 
 export function addFormProjects(titles) {
-  titles.forEach((title) => {
+  const options = [...projectElement.querySelectorAll("option")].map(
+    (element) => element.value.toLowerCase()
+  );
+
+  const uniqueTitles = titles.filter((title) => {
+    return !options.includes(title.toLowerCase());
+  });
+
+  uniqueTitles.forEach((title) => {
     let option = document.createElement("option");
     option.text = title;
     option.value = title;
