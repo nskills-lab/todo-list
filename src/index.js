@@ -9,6 +9,7 @@ import {
   loadCurrentProjectTasks,
   deleteProjectTasks,
 } from "./scripts/todoList.js";
+import { displayTodayTasks } from "./scripts/today.js";
 import { createProjectNode, getProjectTitles } from "./scripts/projects.js";
 const formContainer = document.querySelector("#form-container");
 const newTaskButton = document.querySelector("#add-task-button");
@@ -44,6 +45,8 @@ taskForm.addEventListener("submit", (e) => {
     todoListContainer.appendChild(taskNode);
   }
   loadCurrentProjectTasks(currentProject.innerText);
+  const titles = getProjectTitles();
+  addFormProjects(titles);
   clearForm();
 });
 
@@ -131,12 +134,17 @@ sidebar.addEventListener("click", (e) => {
     currentProject.innerText = element.querySelector(
       "div[data-project-title]"
     ).innerText;
-    loadCurrentProjectTasks(element.innerText);
+    loadCurrentProjectTasks(currentProject.innerText);
     return;
   }
 
-  if (element.matches("[data-project-title]") || element.matches("li")) {
+  if (element.matches("[data-project-title]") || element.matches("li#inbox")) {
     currentProject.innerText = element.innerText;
     loadCurrentProjectTasks(currentProject.innerText);
+    return;
+  }
+
+  if (element.matches("li#today")) {
+    displayTodayTasks();
   }
 });

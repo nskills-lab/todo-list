@@ -1,4 +1,5 @@
 import Task from "./task.js";
+import { getProjectTitles } from "./projects.js";
 const generator = idGenerator();
 const nameElement = document.querySelector("#task-name");
 const descriptionElement = document.querySelector("#task-description");
@@ -18,6 +19,7 @@ export function createTask(id) {
   const name = nameElement.value.trim();
   const description = descriptionElement.value.trim();
   const date = dateElement.value.trim();
+
   const priority = priorityElement.value.trim() || "low";
   const project = projectElement.value.trim();
   const taskId = id ?? generator.next().value.toString();
@@ -33,7 +35,7 @@ export function clearForm() {
   descriptionElement.value = "";
   dateElement.value = "";
   priorityElement.value = "";
-  projectElement.value = "inbox";
+  projectElement.value = "";
 }
 
 export function prefillForm(taskId) {
@@ -48,9 +50,10 @@ export function prefillForm(taskId) {
   const priorityColor = task.querySelector("[data-priority-color]").style
     .backgroundColor;
   priorityElement.value = PRIORITY_MAP.get(priorityColor);
-  projectElement.value = task
-    .querySelector("[data-project]")
-    .dataset.dataProject.trim();
+  const project = task.querySelector("[data-project]").dataset.project.trim();
+  projectElement.value = project;
+  const titles = getProjectTitles();
+  addFormProjects(titles);
 }
 
 export function addFormProjects(titles) {

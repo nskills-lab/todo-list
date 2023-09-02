@@ -15,8 +15,9 @@ export function createTaskNode(task) {
     taskToRender = elementExists;
   } else {
     taskToRender = template.content.cloneNode(true);
-    const id = taskToRender.querySelector("[data-task-id]");
-    id.dataset.taskId = task.id;
+    const task = taskToRender.querySelector("[data-task-id]");
+    task.dataset.taskId = task.id;
+    taskToRender = task;
   }
 
   addOrUpdateTaskToRender(taskToRender, task);
@@ -28,7 +29,6 @@ export function loadCurrentProjectTasks(currentProjectTitle) {
 
   tasks.forEach((element) => {
     const classes = [...element.classList];
-    console.log(classes);
     if (
       element.dataset.project.toLowerCase() ===
       currentProjectTitle.toLowerCase()
@@ -63,9 +63,7 @@ function addOrUpdateTaskToRender(taskToRender, task) {
   const color = PRIORITY_MAP.get(task.priority) ?? "green";
   const priority = taskToRender.querySelector("[data-priority-color]");
   priority.style.backgroundColor = color;
-
-  const project = taskToRender.querySelector("[data-task-id]");
-  project.dataset.project = task.project;
+  taskToRender.dataset.project = task.project;
 
   const title = taskToRender.querySelector("[data-title]");
   title.innerText = task.name;
