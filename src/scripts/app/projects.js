@@ -1,6 +1,6 @@
-const projectTemplate = document.querySelector("#project-template");
+import { projectTemplate, projectContainer } from "../data/DOMSelectors.js";
+import { idGenerator } from "../utility/utility.js";
 const generator = idGenerator();
-const projectContainer = document.querySelector("#projects-container");
 
 export function createProjectNode(title) {
   const project = projectFactory(title);
@@ -23,9 +23,3 @@ export function getProjectTitles() {
 const projectFactory = (title) => {
   return { id: generator.next().value.toString(), title };
 };
-function* idGenerator() {
-  let count = 1;
-  while (true) {
-    yield count++;
-  }
-}

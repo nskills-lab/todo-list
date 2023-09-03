@@ -1,75 +1,79 @@
 import {
   createTask,
-  clearForm,
-  prefillForm,
-  addFormProjects,
-} from "./scripts/form.js";
+  resetForm,
+  autofill,
+  updateProjectMenu,
+} from "./scripts/app/taskForm.js";
 import {
   createTaskNode,
   loadCurrentProjectTasks,
   deleteProjectTasks,
-} from "./scripts/todoList.js";
-import { displayTodayTasks } from "./scripts/today.js";
-import { createProjectNode, getProjectTitles } from "./scripts/projects.js";
-const formContainer = document.querySelector("#form-container");
-const newTaskButton = document.querySelector("#add-task-button");
-const taskForm = document.querySelector("#task-form");
-const overlay = document.querySelector("#overlay");
-const todoListContainer = document.querySelector("#todo-list-container");
-const cancelButton = document.querySelector("#form-btn-cancel");
-const newProject = document.querySelector("#new-project-div");
-const newProjectPopup = document.querySelector("#new-project-popup");
-const newProjectButtons = document.querySelector("#project-buttons-wrapper");
-const newProjectInput = document.querySelector("#project-name-input");
-const projectContainer = document.querySelector("#projects-container");
-const currentProject = document.querySelector("#project-name");
-const sidebar = document.querySelector("#sidebar");
+} from "./scripts/app/todoList.js";
+import { displayTodayTasks } from "./scripts/app/today.js";
+import { createProjectNode, getProjectTitles } from "./scripts/app/projects.js";
+import * as selectors from "./scripts/data/DOMSelectors.js";
 
-newTaskButton.addEventListener("click", () => {
-  formContainer.classList.toggle("active");
-  overlay.classList.toggle("active");
+/**
+ * Opens up new task form
+ */
+selectors.newTaskButton.addEventListener("click", () => {
+  selectors.formContainer.classList.toggle("active");
+  selectors.overlay.classList.toggle("active");
   const titles = getProjectTitles();
-  addFormProjects(titles);
-  clearForm();
+  updateProjectMenu(titles);
+  resetForm();
 });
 
-taskForm.addEventListener("submit", (e) => {
+/**
+ * 1. Gathers inputs from submitted task form.
+ * 2. Creates task node and updates todo list.
+ */
+selectors.taskForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  formContainer.classList.toggle("active");
-  overlay.classList.toggle("active");
+  selectors.formContainer.classList.toggle("active");
+  selectors.overlay.classList.toggle("active");
   const existingTaskId = e.target.dataset.taskId;
-
   const task = createTask(existingTaskId);
   const taskNode = createTaskNode(task);
+
   if (!existingTaskId) {
-    todoListContainer.appendChild(taskNode);
+    selectors.todoListContainer.appendChild(taskNode);
   }
-  loadCurrentProjectTasks(currentProject.innerText);
+  loadCurrentProjectTasks(selectors.currentProject.innerText);
   const titles = getProjectTitles();
-  addFormProjects(titles);
-  clearForm();
+  updateProjectMenu(titles);
+  resetForm();
 });
 
-cancelButton.addEventListener("click", (e) => {
-  formContainer.classList.toggle("active");
-  overlay.classList.toggle("active");
-  clearForm();
+/**
+ * Closes task form.
+ */
+selectors.cancelButton.addEventListener("click", (e) => {
+  selectors.formContainer.classList.toggle("active");
+  selectors.overlay.classList.toggle("active");
+  resetForm();
 });
 
-todoListContainer.addEventListener("click", (e) => {
+/**
+ * Actions related to editing and deleting existing task on the todo list.
+ */
+selectors.todoListContainer.addEventListener("click", (e) => {
   const element = e.target;
   if (element.closest("button").matches("[data-task-delete]")) {
     const taskToDelete = element.closest(".task-card");
-    todoListContainer.removeChild(taskToDelete);
+    selectors.todoListContainer.removeChild(taskToDelete);
   } else if (element.closest("button").matches("[data-task-edit]")) {
     const id = element.closest("div[data-task-id]").dataset.taskId;
-    prefillForm(id);
-    formContainer.classList.toggle("active");
-    overlay.classList.toggle("active");
+    autofill(id);
+    selectors.formContainer.classList.toggle("active");
+    selectors.overlay.classList.toggle("active");
   }
 });
 
-todoListContainer.addEventListener("change", (e) => {
+/**
+ * Actions related to marking a task as complete and undoing it.
+ */
+selectors.todoListContainer.addEventListener("change", (e) => {
   if (e.target.closest("input").matches("#task-checkbox")) {
     const task = e.target.closest("div[data-task-id]");
     const title = e.target
@@ -86,14 +90,20 @@ todoListContainer.addEventListener("change", (e) => {
   }
 });
 
-newProject.addEventListener("click", (e) => {
-  newProject.classList.toggle("inactive");
-  newProjectPopup.classList.toggle("active");
+/**
+ * Brings up a pop up for creating a new project.
+ */
+selectors.createProject.addEventListener("click", (e) => {
+  selectors.createProject.classList.toggle("inactive");
+  selectors.newProjectPopup.classList.toggle("active");
 });
 
-newProjectButtons.addEventListener("click", (e) => {
+/**
+ * Actions related to creating a new project.
+ */
+selectors.newProjectButtons.addEventListener("click", (e) => {
   if (e.target.matches("#project-save")) {
-    const newProjectTitle = newProjectInput.value.trim();
+    const newProjectTitle = selectors.newProjectInput.value.trim();
     if (!newProjectTitle) return;
     const reservedNames = getProjectTitles().map((title) =>
       title.toLowerCase()
@@ -105,15 +115,18 @@ newProjectButtons.addEventListener("click", (e) => {
       return;
     }
     const project = createProjectNode(newProjectTitle);
-    projectContainer.appendChild(project);
+    selectors.projectContainer.appendChild(project);
   }
 
-  newProjectInput.value = "";
-  newProject.classList.toggle("inactive");
-  newProjectPopup.classList.toggle("active");
+  selectors.newProjectInput.value = "";
+  selectors.createProject.classList.toggle("inactive");
+  selectors.newProjectPopup.classList.toggle("active");
 });
 
-sidebar.addEventListener("click", (e) => {
+/**
+ * Actions related to sidebar menu actions.
+ */
+selectors.sidebar.addEventListener("click", (e) => {
   const element = e.target;
 
   if (element.matches("#projects-container")) return;
@@ -125,26 +138,27 @@ sidebar.addEventListener("click", (e) => {
     projectToDelete.remove();
 
     deleteProjectTasks(title);
-    currentProject.innerText = "Inbox";
-    loadCurrentProjectTasks(currentProject.innerText);
+    selectors.currentProject.innerText = "Inbox";
+    loadCurrentProjectTasks(selectors.currentProject.innerText);
     return;
   }
 
   if (element.matches(".project-card")) {
-    currentProject.innerText = element.querySelector(
+    selectors.currentProject.innerText = element.querySelector(
       "div[data-project-title]"
     ).innerText;
-    loadCurrentProjectTasks(currentProject.innerText);
+    loadCurrentProjectTasks(selectors.currentProject.innerText);
     return;
   }
 
   if (element.matches("[data-project-title]") || element.matches("li#inbox")) {
-    currentProject.innerText = element.innerText;
-    loadCurrentProjectTasks(currentProject.innerText);
+    selectors.currentProject.innerText = element.innerText;
+    loadCurrentProjectTasks(selectors.currentProject.innerText);
     return;
   }
 
   if (element.matches("li#today")) {
+    selectors.currentProject.innerText = element.innerText;
     displayTodayTasks();
   }
 });

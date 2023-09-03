@@ -1,10 +1,5 @@
-const template = document.querySelector("#task-template");
-const todoListContainer = document.querySelector("#todo-list-container");
-const PRIORITY_MAP = new Map([
-  ["high", "red"],
-  ["medium", "yellow"],
-  ["low", "green"],
-]);
+import { todoListContainer, template } from "../data/DOMSelectors.js";
+import { PRIORITY_COLOR_MAP } from "../data/priority.js";
 
 export function createTaskNode(task) {
   const elementExists = todoListContainer.querySelector(
@@ -15,12 +10,13 @@ export function createTaskNode(task) {
     taskToRender = elementExists;
   } else {
     taskToRender = template.content.cloneNode(true);
-    const task = taskToRender.querySelector("[data-task-id]");
-    task.dataset.taskId = task.id;
-    taskToRender = task;
+    const taskEl = taskToRender.querySelector("[data-task-id]");
+
+    taskEl.dataset.taskId = task.id;
+    taskToRender = taskEl;
   }
 
-  addOrUpdateTaskToRender(taskToRender, task);
+  setTaskNodeValues(taskToRender, task);
   return taskToRender;
 }
 
@@ -53,14 +49,13 @@ export function deleteProjectTasks(projectTitle) {
 
 function getProjectTasks(projectTitle) {
   const tasks = [...todoListContainer.querySelectorAll(".task-card")];
-
   return tasks.filter((element) => {
-    element.dataset.project.toLowerCase() === projectTitle.toLowerCase();
+    return element.dataset.project.toLowerCase() === projectTitle.toLowerCase();
   });
 }
 
-function addOrUpdateTaskToRender(taskToRender, task) {
-  const color = PRIORITY_MAP.get(task.priority) ?? "green";
+function setTaskNodeValues(taskToRender, task) {
+  const color = PRIORITY_COLOR_MAP.get(task.priority) ?? "green";
   const priority = taskToRender.querySelector("[data-priority-color]");
   priority.style.backgroundColor = color;
   taskToRender.dataset.project = task.project;
