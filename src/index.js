@@ -124,7 +124,7 @@ selectors.newProjectButtons.addEventListener("click", (e) => {
 });
 
 /**
- * Actions related to sidebar menu actions.
+ * Actions related to sidebar menu links.
  */
 selectors.sidebar.addEventListener("click", (e) => {
   const element = e.target;
