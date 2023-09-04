@@ -1,19 +1,21 @@
 :root{
 --opaque-dark: #001927;
 --transparent-dark: rgba(0, 0, 0, .75);
+--opaque-grey: rgb(233, 228, 224);
 --primary-light: #fff;
 --logo-color: #00BBBB;
 --primary-orange: #eab308;
+--container-border-radius: 0.7rem;
 }
 
 @font-face {
     font-family: 'Barriecito';
     src:  url('Barriecito-Regular.ttf') format('truetype');
-
 }
 
 *,
-*::after {
+*::before,
+*::after{
     box-sizing: border-box;
 }
 
@@ -39,7 +41,6 @@ body{
     display: block;
 }
 
-
 #app-wrapper{
     width: 100vw;
     height: 100vh;
@@ -55,7 +56,6 @@ body{
     width: 100vw;
     height: 5vh;
     box-shadow: 0 3px 3px -1px #c3c6c6;
-   
 }
 
 #top-bar-title{
@@ -72,8 +72,7 @@ body{
 p[data-end]::before {
     content: attr(data-end) ;
     color: var(--logo-color);
-
-  }
+}
 
 #top-bar-icon{
     margin-left: 20px;
@@ -90,7 +89,6 @@ p[data-end]::before {
     width: 100vw;
     height: 100vh;
     display: flex;
-
 }
 
 #sidebar{
@@ -107,35 +105,24 @@ p[data-end]::before {
     height: 30%;
     width: 90%;
     background-color: var(--primary-orange);
-    border-radius: 0.7rem;
-    
+    border-radius: var(--container-border-radius);
 }
 
 #left-menu>ul{
-    height: 90%;
-    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
- 
+    height: 90%;
+    width: 90%;
 }
 
 ul>li{
+    display: flex;
+    align-items: center;
     font-family: 'Barriecito', cursive;
     list-style: none;
     cursor: pointer;
     font-size: 1.3rem;
-}
-
-#inbox{
-    display: flex;
-    align-items: center;
-}
-
-#today{
-    display: flex;
-    align-items: center;
-    
 }
 
 li > img {
@@ -144,24 +131,23 @@ li > img {
 }
 
 #projects-container{
-    height: 60%;
-    width: 90%;
-    background-color:  var(--opaque-dark);
-   
-    border-radius: 0.7rem;
-    font-family: 'Barriecito', cursive;
     display: flex;
     flex-direction: column;
     overflow: auto;
+    height: 60%;
+    width: 90%;
+    background-color:  var(--opaque-dark);
+    border-radius: var(--container-border-radius);
+    font-family: 'Barriecito', cursive;
 }
 
 #projects-top-bar{
-    font-size: 1.3rem;
     display: flex;
+    align-items: center;
+    font-size: 1.3rem;
     padding-top: 1rem;
     padding-left: 2.3rem;
     padding-bottom: 1rem;
-    align-items: center;
 }
 
 #create-project-div{
@@ -177,8 +163,6 @@ li > img {
 .task-card.inactive{
     display: none;
 }
-
-
 
 .projects-content{
     align-self: center;
@@ -241,7 +225,6 @@ li > img {
     align-items: center;
 }
 
-
 div[data-project-delete]{
     margin-left: auto;
     padding-right: .5rem;
@@ -253,7 +236,6 @@ div[data-project-delete]{
 div[data-project-delete]:hover{
     color: var(--primary-light);;
 }
-
 
 div[data-project-title]{
     padding-left: .5rem;
@@ -275,7 +257,6 @@ div[data-project-title]{
     border-radius: 1.2rem;
     display: flex;
     flex-direction: column;
-   
 }
 
 .empty-task-list-background{
@@ -315,7 +296,6 @@ div[data-project-title]{
 
 div[data-priority-color]{
     min-width: 10px;
-
 }
 
 #task-checkbox:hover{
@@ -349,7 +329,7 @@ div[data-due-date]{
 
 .task-action-items>button:hover{
     cursor: pointer;
-    background-color: rgb(233, 228, 224);
+    background-color: var(--opaque-grey);
     border-radius: .2rem;
 }
 
@@ -360,10 +340,9 @@ div[data-due-date]{
     height: 30%;
     top: 20%;
     left: 50%;
-    background-color: rgb(233, 228, 224);
-    border-radius: 0.7rem;
+    background-color: var(--opaque-grey);
+    border-radius: var(--container-border-radius);
     z-index: 3;
-
 }
 
 #task-form{
@@ -389,7 +368,6 @@ div[data-due-date]{
     flex-direction: column;
     width: 90%;
     height: 60%;
-
 }
 
 #task-form-name-desc-wrapper>*{
@@ -423,7 +401,6 @@ div[data-due-date]{
     border: none;
     justify-content: center;
     align-items: center;
-
 }
 
 #task-project{
@@ -434,14 +411,12 @@ div[data-due-date]{
 #task-form-select-wrapper>*:focus{
     cursor: pointer;
     outline: none;
-
 }
 
 #task-buttons-wrapper{
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 #task-buttons-wrapper>*{
@@ -455,7 +430,6 @@ div[data-due-date]{
     border-radius: .3rem;
     outline: none;
     border: none;
-
 }
 
 #task-buttons-wrapper>input:hover,
@@ -464,7 +438,6 @@ div[data-due-date]{
     cursor: pointer;
     background-color: var(--primary-orange);
     color: var(--opaque-dark);
-
 }
 
 #form-btn-save[disabled]{
@@ -472,7 +445,6 @@ div[data-due-date]{
     cursor: not-allowed;
     pointer-events:none;
 }
-
 
 #add-task-button{
     position: fixed;
