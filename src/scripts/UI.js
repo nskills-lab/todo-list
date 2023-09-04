@@ -88,4 +88,79 @@ export default class UI {
       selectors.overlay.classList.toggle("active");
     }
   }
+
+  static openNewProjectPopUp() {
+    selectors.createProject.classList.toggle("inactive");
+    selectors.newProjectPopup.classList.toggle("active");
+    selectors.overlay.classList.toggle("active");
+  }
+
+  static handleNewProjectPopUpActions(event) {
+    if (event.target.matches("#project-save")) {
+      const newProjectTitle = selectors.newProjectInput.value.trim();
+      if (!newProjectTitle) return;
+      const reservedNames = getProjectTitles().map((title) =>
+        title.toLowerCase()
+      );
+
+      reservedNames.push("inbox", "today");
+      if (reservedNames.includes(newProjectTitle.toLowerCase())) {
+        alert("Project already exists with this name!");
+        return;
+      }
+      const project = createProjectNode(newProjectTitle);
+      selectors.projectContainer.appendChild(project);
+    }
+
+    selectors.newProjectInput.value = "";
+    selectors.createProject.classList.toggle("inactive");
+    selectors.newProjectPopup.classList.toggle("active");
+    selectors.overlay.classList.toggle("active");
+  }
+
+  static displayLeftMenuContent(event) {
+    const element = event.target;
+    if (element.matches("li#inbox")) {
+      selectors.currentProject.innerText = element.innerText;
+      loadCurrentProjectTasks(selectors.currentProject.innerText);
+      return;
+    }
+
+    if (element.matches("li#today")) {
+      selectors.currentProject.innerText = element.innerText;
+      displayTodayTasks();
+    }
+  }
+
+  static handleProjectContentActions(event) {
+    const element = event.target;
+
+    if (element.matches("#projects-container")) return;
+
+    if (element.matches("[data-project-delete]")) {
+      const projectContent = element.closest("div[data-project-id]");
+      const projectTitle = projectContent.querySelector(
+        "[data-project-title]"
+      ).innerText;
+
+      projectContent.remove();
+      deleteProjectTasks(projectTitle);
+
+      selectors.currentProject.innerText = "Inbox";
+      loadCurrentProjectTasks(selectors.currentProject.innerText);
+      return;
+    }
+
+    if (element.matches(".project-card")) {
+      selectors.currentProject.innerText = element.querySelector(
+        "div[data-project-title]"
+      ).innerText;
+    }
+
+    if (element.matches("[data-project-title]")) {
+      selectors.currentProject.innerText = element.innerText;
+    }
+
+    loadCurrentProjectTasks(selectors.currentProject.innerText);
+  }
 }
