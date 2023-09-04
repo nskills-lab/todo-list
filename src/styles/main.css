@@ -10,7 +10,6 @@ body{
 
 }
 
-
 #overlay{
     position: absolute;
     display: none ;
@@ -451,10 +450,19 @@ div[data-due-date]{
 
 }
 
-#task-buttons-wrapper>button:hover,
-#task-buttons-wrapper>button:focus{
+#task-buttons-wrapper>input:hover,
+#task-buttons-wrapper>input:focus, 
+#task-buttons-wrapper>button:hover{
     cursor: pointer;
+    background-color: #eab308;
+    color:#001927;
 
+}
+
+#form-btn-save[disabled]{
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events:none;
 }
 
 

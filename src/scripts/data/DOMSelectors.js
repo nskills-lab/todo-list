@@ -20,3 +20,4 @@ export const priorityElement = document.querySelector("#task-priority");
 export const projectElement = document.querySelector("#task-project");
 export const template = document.querySelector("#task-template");
 export const projectTemplate = document.querySelector("#project-template");
+export const taskSaveButton = document.querySelector("#form-btn-save");

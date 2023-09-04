@@ -26,6 +26,7 @@ export function resetForm() {
   selectors.dateElement.value = "";
   selectors.priorityElement.value = "";
   selectors.projectElement.value = "";
+  selectors.taskSaveButton.disabled = true;
 }
 
 export function autofill(taskId) {
@@ -50,6 +51,7 @@ export function autofill(taskId) {
   selectors.projectElement.value = task.dataset.project;
   const titles = getProjectTitles();
   updateProjectMenu(titles);
+  selectors.taskSaveButton.disabled = false;
 }
 
 export function updateProjectMenu(titles) {

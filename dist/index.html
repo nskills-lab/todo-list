@@ -30,8 +30,8 @@
                     <div id="new-project-popup" >
                         <input id="project-name-input" type="text" class="projects-content">
                         <div id="project-buttons-wrapper">
-                            <button id="project-save">Save</button>
                             <button id="project-cancel">Cancel</button>
+                            <button id="project-save">Save</button>
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                 <form id="task-form" novalidate>
                     <div id="task-form-name-desc-wrapper">
                         <label for="task-name"></label>
-                        <input type="text" name="Name" id="task-name" placeholder="Task name" required>
+                        <input type="text" name="Name" id="task-name" placeholder="Task name">
                         <label for="task-description"></label>
                         <textarea name="Description" id="task-description" rows="2" cols="10" placeholder="Description"></textarea>
                     </div>
@@ -71,7 +71,7 @@
                     </div>
                     <div id="task-buttons-wrapper">
                         <input type="button" id="form-btn-cancel" value="Cancel"></input>
-                        <button id="form-btn-add" type="submit">Add task</button>
+                        <button id="form-btn-save" type="submit" disabled>Save</button>
                     </div>
                 </form>
             </div>

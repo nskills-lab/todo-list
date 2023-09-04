@@ -13,12 +13,22 @@ import { displayTodayTasks } from "./scripts/app/today.js";
 import { createProjectNode, getProjectTitles } from "./scripts/app/projects.js";
 import * as selectors from "./scripts/data/DOMSelectors.js";
 
+selectors.nameElement.addEventListener("keyup", () => {
+  const taskTitle = selectors.nameElement.value;
+  if (taskTitle) {
+    selectors.taskSaveButton.disabled = false;
+  } else {
+    selectors.taskSaveButton.disabled = true;
+  }
+});
+
 /**
  * Opens up new task form
  */
 selectors.newTaskButton.addEventListener("click", () => {
   selectors.formContainer.classList.toggle("active");
   selectors.overlay.classList.toggle("active");
+  selectors.taskSaveButton.disabled = true;
   const titles = getProjectTitles();
   updateProjectMenu(titles);
   resetForm();
