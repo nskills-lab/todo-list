@@ -12,93 +12,13 @@ import {
 import { displayTodayTasks } from "./scripts/app/today.js";
 import { createProjectNode, getProjectTitles } from "./scripts/app/projects.js";
 import * as selectors from "./scripts/data/DOMSelectors.js";
+import UI from "./scripts/UI.js";
 
-selectors.nameElement.addEventListener("keyup", () => {
-  const taskTitle = selectors.nameElement.value;
-  if (taskTitle) {
-    selectors.taskSaveButton.disabled = false;
-  } else {
-    selectors.taskSaveButton.disabled = true;
-  }
-});
-
-/**
- * Opens up new task form
- */
-selectors.newTaskButton.addEventListener("click", () => {
-  selectors.formContainer.classList.toggle("active");
-  selectors.overlay.classList.toggle("active");
-  selectors.taskSaveButton.disabled = true;
-  const titles = getProjectTitles();
-  updateProjectMenu(titles);
-  resetForm();
-});
-
-/**
- * 1. Gathers inputs from submitted task form.
- * 2. Creates task node and updates todo list.
- */
-selectors.taskForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  selectors.formContainer.classList.toggle("active");
-  selectors.overlay.classList.toggle("active");
-  const existingTaskId = e.target.dataset.taskId;
-  const task = createTask(existingTaskId);
-  const taskNode = createTaskNode(task);
-
-  if (!existingTaskId) {
-    selectors.todoListContainer.appendChild(taskNode);
-  }
-  loadCurrentProjectTasks(selectors.currentProject.innerText);
-  const titles = getProjectTitles();
-  updateProjectMenu(titles);
-  resetForm();
-});
-
-/**
- * Closes task form.
- */
-selectors.cancelButton.addEventListener("click", (e) => {
-  selectors.formContainer.classList.toggle("active");
-  selectors.overlay.classList.toggle("active");
-  resetForm();
-});
-
-/**
- * Actions related to editing and deleting existing task on the todo list.
- */
-selectors.todoListContainer.addEventListener("click", (e) => {
-  const element = e.target;
-  if (element.closest("button").matches("[data-task-delete]")) {
-    const taskToDelete = element.closest(".task-card");
-    selectors.todoListContainer.removeChild(taskToDelete);
-  } else if (element.closest("button").matches("[data-task-edit]")) {
-    const id = element.closest("div[data-task-id]").dataset.taskId;
-    autofill(id);
-    selectors.formContainer.classList.toggle("active");
-    selectors.overlay.classList.toggle("active");
-  }
-});
-
-/**
- * Actions related to marking a task as complete and undoing it.
- */
-selectors.todoListContainer.addEventListener("change", (e) => {
-  if (e.target.closest("input").matches("#task-checkbox")) {
-    const task = e.target.closest("div[data-task-id]");
-    const title = e.target
-      .closest("div[data-task-id]")
-      .querySelector("[data-title]");
-
-    if (title.style.textDecoration === "line-through") {
-      title.style.textDecoration = "";
-      task.style.opacity = 1;
-      return;
-    }
-    title.style.textDecoration = "line-through";
-    task.style.opacity = 0.5;
-  }
-});
+selectors.nameElement.addEventListener("keyup", UI.handleTaskTitleInput);
+selectors.newTaskButton.addEventListener("click", UI.openNewTaskForm);
+selectors.taskForm.addEventListener("submit", UI.updateToDoList);
+selectors.cancelButton.addEventListener("click", UI.closeTaskForm);
+selectors.todoListContainer.addEventListener("click", UI.updateTask);
 
 /**
  * Brings up a pop up for creating a new project.

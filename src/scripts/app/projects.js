@@ -5,7 +5,6 @@ const generator = idGenerator();
 export function createProjectNode(title) {
   const project = projectFactory(title);
   const projectElement = projectTemplate.content.cloneNode(true);
-  projectElement;
   const id = projectElement.querySelector("[data-project-id]");
   id.dataset.projectId = project.id;
   const projectTitle = projectElement.querySelector("[data-project-title]");

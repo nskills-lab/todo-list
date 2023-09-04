@@ -9,7 +9,6 @@ export function createTask(id) {
   const name = selectors.nameElement.value.trim();
   const description = selectors.descriptionElement.value.trim();
   const date = selectors.dateElement.value.trim();
-
   const priority = selectors.priorityElement.value.trim() || "low";
   const project = selectors.projectElement.value.trim();
   const taskId = id ?? generator.next().value.toString();
