@@ -14,6 +14,7 @@ import { displayTodayTasks } from "./app/today.js";
 import { createProjectNode, getProjectTitles } from "./app/projects.js";
 import * as selectors from "./data/DOMselectors.js";
 import { saveToLocalStorage, getFromLocalStorage } from "./app/localStorage.js";
+import Task from "./app/task.js";
 
 export default class UI {
   static handleTaskTitleInput() {
@@ -174,5 +175,33 @@ export default class UI {
     loadCurrentProjectTasks(selectors.currentProject.innerText);
   }
 
-  // add a way to retrieve and display data from localStorage when the app is first loaded
+  static loadAppFromLocalStorage() {
+    const todoLists = JSON.parse(getFromLocalStorage());
+    const projectLists = Object.keys(todoLists);
+
+    projectLists.forEach((project) => {
+      if (project.toLowerCase() !== "inbox") {
+        const projectNode = createProjectNode(project);
+        selectors.projectContainer.appendChild(projectNode);
+      }
+
+      const tasks = todoLists[project];
+
+      tasks.forEach((task) => {
+        const newTask = new Task(
+          task.id,
+          task.title,
+          task.details,
+          task.dueDate,
+          task.priority,
+          task.project
+        );
+        const taskNode = createTaskNode(newTask);
+        if (task.project.toLowerCase() !== "inbox") {
+          taskNode.classList.toggle("inactive");
+        }
+        selectors.todoListContainer.appendChild(taskNode);
+      });
+    });
+  }
 }
