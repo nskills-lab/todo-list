@@ -5,7 +5,8 @@
 --primary-light: #fff;
 --logo-color: #00BBBB;
 --primary-orange: #eab308;
---container-border-radius: 0.7rem;
+--large-container-border-radius: 0.7rem;
+--small-container-border-radius: 0.2rem;
 }
 
 @font-face {
@@ -23,6 +24,11 @@ body{
     margin: 0;
     background-color: var(--primary-light);
     color: var(--opaque-dark);
+}
+
+button, input{
+    outline: none;
+    border: none;
 }
 
 #overlay{
@@ -92,20 +98,20 @@ p[data-end]::before {
 }
 
 #sidebar{
-    flex-grow: 1;
+    /*flex-grow: 1;*/
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     color: var(--primary-light);;
-    min-width: 400px;
+    width: 400px;
 }
 
 #left-menu{
     height: 30%;
     width: 90%;
     background-color: var(--primary-orange);
-    border-radius: var(--container-border-radius);
+    border-radius: var(--large-container-border-radius);
 }
 
 #left-menu>ul{
@@ -122,7 +128,7 @@ ul>li{
     font-family: 'Barriecito', cursive;
     list-style: none;
     cursor: pointer;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 li > img {
@@ -137,14 +143,14 @@ li > img {
     height: 60%;
     width: 90%;
     background-color:  var(--opaque-dark);
-    border-radius: var(--container-border-radius);
+    border-radius: var(--large-container-border-radius);
     font-family: 'Barriecito', cursive;
 }
 
 #projects-top-bar{
     display: flex;
     align-items: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     padding-top: 1rem;
     padding-left: 2.3rem;
     padding-bottom: 1rem;
@@ -190,10 +196,8 @@ li > img {
 }
 
 #project-name-input{
-    border: none;
-    outline: none;
     font-family: inherit;
-    border-radius: .2rem;
+    border-radius: var(--small-container-border-radius);
 }
 
 #project-buttons-wrapper{
@@ -206,18 +210,12 @@ li > img {
     background-color:var(--primary-orange);
     color: var(--opaque-dark);
     font-family: inherit;
-    border: none;
-    outline: none;
     font-size: .9rem;
-    border-radius: .2rem;
+    border-radius: var(--small-container-border-radius);
     width: 55px;
     height: 20px;
     margin-top: .4rem;
     margin-right: .4rem;
-}
-
-#project-buttons-wrapper>button:hover{
-    cursor: pointer;
 }
 
 .project-card{
@@ -246,7 +244,7 @@ div[data-project-title]{
 .project-selected:hover {
     cursor: pointer;
     background-color: #3b3f42;
-    border-radius: .2rem;
+    border-radius: var(--small-container-border-radius);
 }
 
 #main-content{
@@ -283,7 +281,7 @@ div[data-project-title]{
 }
 
 .task-card{
-    width: 50%;
+    width: 700px;
     border-bottom-color:  var(--opaque-dark);
     border-bottom-style: solid;
     border-bottom-width: thin;
@@ -298,7 +296,9 @@ div[data-priority-color]{
     min-width: 10px;
 }
 
-#task-checkbox:hover{
+#task-checkbox:hover,
+button:hover,
+button:focus{
     cursor: pointer;
 }
 
@@ -322,15 +322,12 @@ div[data-due-date]{
 }
 
 .task-action-items>button{
-    outline: none;
-    border: none;
     background-color: var(--primary-light);;
 }
 
 .task-action-items>button:hover{
-    cursor: pointer;
     background-color: var(--opaque-grey);
-    border-radius: .2rem;
+    border-radius: var(--small-container-border-radius);
 }
 
 #form-container{
@@ -341,7 +338,7 @@ div[data-due-date]{
     top: 20%;
     left: 50%;
     background-color: var(--opaque-grey);
-    border-radius: var(--container-border-radius);
+    border-radius: var(--large-container-border-radius);
     z-index: 3;
 }
 
@@ -357,7 +354,7 @@ div[data-due-date]{
 
 #task-form>* {
     border: none;
-    border-radius: 0.2rem;
+    border-radius: var(--small-container-border-radius);
     color: var(--opaque-dark);
     background-color: inherit;
     font-size: 1rem;
@@ -428,8 +425,6 @@ div[data-due-date]{
     color: var(--primary-light);;
     margin-left: .5rem;
     border-radius: .3rem;
-    outline: none;
-    border: none;
 }
 
 #task-buttons-wrapper>input:hover,
@@ -454,15 +449,9 @@ div[data-due-date]{
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    outline: none;
-    border: none;
 }
 
-#add-task-button:hover,
-#add-task-button:focus,
-#form-btn:hover,
-#form-btn:focus{
-    cursor: pointer;
+#add-task-button:hover{
     transform: scale(1.1);
 }
 

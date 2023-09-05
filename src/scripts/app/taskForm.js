@@ -54,15 +54,16 @@ export function autofill(taskId) {
 }
 
 export function updateProjectMenu(titles) {
-  const options = [...selectors.projectElement.querySelectorAll("option")].map(
-    (element) => element.value.toLowerCase()
-  );
-
-  const uniqueTitles = titles.filter((title) => {
-    return !options.includes(title.toLowerCase());
+  const reservedOptions = ["Inbox", "Project"];
+  const optionsToDel = [
+    ...selectors.projectElement.querySelectorAll("option"),
+  ].filter((element) => {
+    return !reservedOptions.includes(element.innerText);
   });
 
-  uniqueTitles.forEach((title) => {
+  optionsToDel.forEach((option) => option.remove());
+
+  titles.forEach((title) => {
     let option = document.createElement("option");
     option.text = title;
     option.value = title;
