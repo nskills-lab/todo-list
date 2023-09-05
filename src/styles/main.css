@@ -108,7 +108,7 @@ p[data-end]::before {
 }
 
 #left-menu{
-    height: 30%;
+    height: 25%;
     width: 90%;
     background-color: var(--primary-orange);
     border-radius: var(--large-container-border-radius);
@@ -129,18 +129,24 @@ ul>li{
     list-style: none;
     cursor: pointer;
     font-size: 1.2rem;
+    padding-left: .5rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    margin: 0;
 }
 
 li > img {
   margin-right: 1rem;
   padding: 0;
+  width: 40px;
+  height: 35px;
 }
 
 #projects-container{
     display: flex;
     flex-direction: column;
     overflow: auto;
-    height: 60%;
+    height: 65%;
     width: 90%;
     background-color:  var(--opaque-dark);
     border-radius: var(--large-container-border-radius);
