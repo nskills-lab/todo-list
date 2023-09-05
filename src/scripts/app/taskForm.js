@@ -1,6 +1,6 @@
 import Task from "./task.js";
 import { getProjectTitles } from "./projects.js";
-import * as selectors from "../data/DOMSelectors.js";
+import * as selectors from "../data/DOMselectors.js";
 import { COLOR_PRIORITY_MAP } from "../data/priority.js";
 import { idGenerator } from "../utility/utility.js";
 const generator = idGenerator();
@@ -46,7 +46,6 @@ export function autofill(taskId) {
   const priorityColor = task.querySelector("[data-priority-color]").style
     .backgroundColor;
   selectors.priorityElement.value = COLOR_PRIORITY_MAP.get(priorityColor);
-  console.log(COLOR_PRIORITY_MAP.get(priorityColor));
   selectors.projectElement.value = task.dataset.project;
   const titles = getProjectTitles();
   updateProjectMenu(titles);

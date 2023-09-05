@@ -1,5 +1,6 @@
-import { todoListContainer, template } from "../data/DOMSelectors.js";
-import { PRIORITY_COLOR_MAP } from "../data/priority.js";
+import { todoListContainer, template } from "../data/DOMselectors.js";
+import { PRIORITY_COLOR_MAP, COLOR_PRIORITY_MAP } from "../data/priority.js";
+import { getProjectTitles } from "./projects.js";
 
 export function createTaskNode(task) {
   const elementExists = todoListContainer.querySelector(
@@ -47,6 +48,22 @@ export function deleteProjectTasks(projectTitle) {
   });
 }
 
+export function getTodoLists() {
+  const allProjects = getProjectTitles();
+  allProjects.push("inbox");
+  const todoLists = {};
+  allProjects.forEach((title) => {
+    const tasks = getProjectTasks(title);
+    todoLists[title] = [];
+    tasks.forEach((task) => {
+      const taskJSON = getTaskNodeValues(task);
+      todoLists[title].push(taskJSON);
+    });
+  });
+
+  return todoLists;
+}
+
 function getProjectTasks(projectTitle) {
   const tasks = [...todoListContainer.querySelectorAll(".task-card")];
   return tasks.filter((element) => {
@@ -68,4 +85,17 @@ function setTaskNodeValues(taskToRender, task) {
 
   const date = taskToRender.querySelector("[data-due-date]");
   date.innerText = task.dueDate;
+}
+
+function getTaskNodeValues(task) {
+  let color = task.querySelector("[data-priority-color]").style.backgroundColor;
+  let taskJSON = {
+    id: task.dataset.taskId,
+    project: task.dataset.project,
+    priority: COLOR_PRIORITY_MAP.get(color),
+    title: task.querySelector("[data-title]").innerText,
+    details: task.querySelector("[data-details]").innerText,
+    dueDate: task.querySelector("[data-due-date]").innerText,
+  };
+  return taskJSON;
 }

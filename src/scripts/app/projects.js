@@ -1,4 +1,4 @@
-import { projectTemplate, projectContainer } from "../data/DOMSelectors.js";
+import { projectTemplate, projectContainer } from "../data/DOMselectors.js";
 import { idGenerator } from "../utility/utility.js";
 const generator = idGenerator();
 

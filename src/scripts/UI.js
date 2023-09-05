@@ -8,10 +8,12 @@ import {
   createTaskNode,
   loadCurrentProjectTasks,
   deleteProjectTasks,
+  getTodoLists,
 } from "./app/todoList.js";
 import { displayTodayTasks } from "./app/today.js";
 import { createProjectNode, getProjectTitles } from "./app/projects.js";
-import * as selectors from "./data/DOMSelectors.js";
+import * as selectors from "./data/DOMselectors.js";
+import { saveToLocalStorage, getFromLocalStorage } from "./app/localStorage.js";
 
 export default class UI {
   static handleTaskTitleInput() {
@@ -32,6 +34,18 @@ export default class UI {
     resetForm();
   }
 
+  static closeTaskForm() {
+    selectors.formContainer.classList.toggle("active");
+    selectors.overlay.classList.toggle("active");
+    resetForm();
+  }
+
+  static openNewProjectPopUp() {
+    selectors.createProject.classList.toggle("inactive");
+    selectors.newProjectPopup.classList.toggle("active");
+    selectors.overlay.classList.toggle("active");
+  }
+
   static updateToDoList(event) {
     event.preventDefault();
     selectors.formContainer.classList.toggle("active");
@@ -47,12 +61,8 @@ export default class UI {
     const titles = getProjectTitles();
     updateProjectMenu(titles);
     resetForm();
-  }
-
-  static closeTaskForm() {
-    selectors.formContainer.classList.toggle("active");
-    selectors.overlay.classList.toggle("active");
-    resetForm();
+    const todoLists = JSON.stringify(getTodoLists());
+    saveToLocalStorage(todoLists);
   }
 
   static updateTask(event) {
@@ -78,6 +88,8 @@ export default class UI {
     if (element.closest("button").matches("[data-task-delete]")) {
       const taskToDelete = element.closest(".task-card");
       selectors.todoListContainer.removeChild(taskToDelete);
+      const todoLists = JSON.stringify(getTodoLists());
+      saveToLocalStorage(todoLists);
       return;
     }
 
@@ -89,20 +101,14 @@ export default class UI {
     }
   }
 
-  static openNewProjectPopUp() {
-    selectors.createProject.classList.toggle("inactive");
-    selectors.newProjectPopup.classList.toggle("active");
-    selectors.overlay.classList.toggle("active");
-  }
-
   static handleNewProjectPopUpActions(event) {
     if (event.target.matches("#project-save")) {
       const newProjectTitle = selectors.newProjectInput.value.trim();
       if (!newProjectTitle) return;
+
       const reservedNames = getProjectTitles().map((title) =>
         title.toLowerCase()
       );
-
       reservedNames.push("inbox", "today");
       if (reservedNames.includes(newProjectTitle.toLowerCase())) {
         alert("Project already exists with this name!");
@@ -116,6 +122,8 @@ export default class UI {
     selectors.createProject.classList.toggle("inactive");
     selectors.newProjectPopup.classList.toggle("active");
     selectors.overlay.classList.toggle("active");
+    const todoLists = JSON.stringify(getTodoLists());
+    saveToLocalStorage(todoLists);
   }
 
   static displayLeftMenuContent(event) {
@@ -148,6 +156,8 @@ export default class UI {
 
       selectors.currentProject.innerText = "Inbox";
       loadCurrentProjectTasks(selectors.currentProject.innerText);
+      const todoLists = JSON.stringify(getTodoLists());
+      saveToLocalStorage(todoLists);
       return;
     }
 
@@ -163,4 +173,6 @@ export default class UI {
 
     loadCurrentProjectTasks(selectors.currentProject.innerText);
   }
+
+  // add a way to retrieve and display data from localStorage when the app is first loaded
 }
