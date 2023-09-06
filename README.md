@@ -1,8 +1,8 @@
 # Project: Todo List App
 
-![Empty todo list page.](empty-project.png)
+![Empty todo list page.](./src/images/empty-project.png)
 
-![Sample task view.](sample-task.png)
+![Sample task view.](./src/images/sample-task.png)
 
 Based on The Odin Project's assignment.
 

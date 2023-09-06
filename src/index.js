@@ -1,5 +1,7 @@
 import * as selectors from "./scripts/data/DOMselectors.js";
 import UI from "./scripts/UI.js";
+import "./styles/main.css";
+import "./styles/normalize.css";
 
 window.onload = UI.loadAppFromLocalStorage;
 selectors.nameElement.addEventListener("keyup", UI.handleTaskTitleInput);
