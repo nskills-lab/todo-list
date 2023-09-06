@@ -185,7 +185,6 @@ export default class UI {
   }
 
   static loadAppFromLocalStorage() {
-    //console.log(getFromLocalStorage());
     const storage = getFromLocalStorage();
     console.log(storage);
     if (!storage) return;
