@@ -42,7 +42,7 @@ button, input{
     z-index: 2
 }
 
-#form-container.active, 
+
 #overlay.active{
     display: block;
 }
@@ -98,13 +98,12 @@ p[data-end]::before {
 }
 
 #sidebar{
-    /*flex-grow: 1;*/
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     color: var(--primary-light);;
-    width: 400px;
+    width: 350px;
 }
 
 #left-menu{
@@ -263,14 +262,14 @@ div[data-project-title]{
     flex-direction: column;
 }
 
-.empty-task-list-background{
+.empty-todo-list-background{
     background-image: url("../images/background-image-empty-list.png");
     background-size: 400px 400px;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.empty-task-list-background.inactive{
+.empty-todo-list-background.inactive{
     background-image: none;
 }
 
@@ -342,8 +341,10 @@ div[data-due-date]{
 
 #form-container{
     position: absolute;
-    display: none ;
+    display: none;
+    min-width: 400px;
     width: 25%;
+    min-height: 300px;
     height: 30%;
     top: 20%;
     left: 50%;
@@ -352,14 +353,21 @@ div[data-due-date]{
     z-index: 3;
 }
 
+#form-container.active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #task-form{
-    width: 100%;
-    height: 90%;
+    min-width: 95%;
+    min-height: inherit;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: stretch;
     outline: none;
-    margin: auto;
+    padding: 10px;
 }
 
 #task-form>* {
@@ -373,8 +381,8 @@ div[data-due-date]{
 #task-form-name-desc-wrapper{
     display: flex;
     flex-direction: column;
-    width: 90%;
-    height: 60%;
+    width: 100%;
+    min-height: 150px;
 }
 
 #task-form-name-desc-wrapper>*{
@@ -382,7 +390,6 @@ div[data-due-date]{
     background-color: inherit;
     border: none;
     outline:  none;
-    padding-left: 2rem;
 }
 
 #task-name{
@@ -424,6 +431,7 @@ div[data-due-date]{
     display: flex;
     justify-content: center;
     align-items: center;
+  
 }
 
 #task-buttons-wrapper>*{
@@ -464,4 +472,3 @@ div[data-due-date]{
 #add-task-button:hover{
     transform: scale(1.1);
 }
-

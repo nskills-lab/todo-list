@@ -72,8 +72,6 @@ export function getTodoLists() {
 
 export function handleTodoListBackground(tasks) {
   const classes = [...mainContent.classList];
-  console.log(classes);
-  console.log(tasks.length);
   if (tasks.length !== 0) {
     if (!classes.includes("inactive")) {
       mainContent.classList.toggle("inactive");

@@ -59,7 +59,8 @@ export default class UI {
     if (!existingTaskId) {
       selectors.todoListContainer.appendChild(taskNode);
     }
-    loadCurrentProjectTasks(selectors.currentProject.innerText);
+
+    UI.updateMainContentView(selectors.currentProject.innerText);
     const titles = getProjectTitles();
     updateProjectMenu(titles);
     resetForm();
@@ -92,6 +93,7 @@ export default class UI {
       selectors.todoListContainer.removeChild(taskToDelete);
       const todoLists = JSON.stringify(getTodoLists());
       saveToLocalStorage(todoLists);
+      UI.updateMainContentView(selectors.currentProject.innerText);
       return;
     }
 
@@ -100,6 +102,14 @@ export default class UI {
       autofill(id);
       selectors.formContainer.classList.toggle("active");
       selectors.overlay.classList.toggle("active");
+    }
+  }
+
+  static updateMainContentView(mainContentTitle) {
+    if (mainContentTitle.toLowerCase() === "today") {
+      displayTodayTasks();
+    } else {
+      loadCurrentProjectTasks(selectors.currentProject.innerText);
     }
   }
 
@@ -132,14 +142,13 @@ export default class UI {
     const element = event.target;
     if (element.matches("li#inbox")) {
       selectors.currentProject.innerText = element.innerText;
-      loadCurrentProjectTasks(selectors.currentProject.innerText);
-      return;
     }
 
     if (element.matches("li#today")) {
       selectors.currentProject.innerText = element.innerText;
-      displayTodayTasks();
     }
+
+    UI.updateMainContentView(selectors.currentProject.innerText);
   }
 
   static handleProjectContentActions(event) {
@@ -157,7 +166,7 @@ export default class UI {
       deleteProjectTasks(projectTitle);
 
       selectors.currentProject.innerText = "Inbox";
-      loadCurrentProjectTasks(selectors.currentProject.innerText);
+      UI.updateMainContentView(selectors.currentProject.innerText);
       const todoLists = JSON.stringify(getTodoLists());
       saveToLocalStorage(todoLists);
       return;
@@ -173,7 +182,7 @@ export default class UI {
       selectors.currentProject.innerText = element.innerText;
     }
 
-    loadCurrentProjectTasks(selectors.currentProject.innerText);
+    UI.updateMainContentView(selectors.currentProject.innerText);
   }
 
   static loadAppFromLocalStorage() {
@@ -188,9 +197,9 @@ export default class UI {
 
       const tasks = todoLists[project];
 
-      if (project.toLowerCase() === "inbox") {
-        handleTodoListBackground(tasks);
-      }
+      //if (project.toLowerCase() === "inbox") {
+      //  handleTodoListBackground(tasks);
+      //}
 
       tasks.forEach((task) => {
         const newTask = new Task(
@@ -208,5 +217,6 @@ export default class UI {
         selectors.todoListContainer.appendChild(taskNode);
       });
     });
+    UI.updateMainContentView(selectors.currentProject.innerText);
   }
 }
