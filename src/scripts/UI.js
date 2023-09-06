@@ -9,6 +9,7 @@ import {
   loadCurrentProjectTasks,
   deleteProjectTasks,
   getTodoLists,
+  handleTodoListBackground,
 } from "./app/todoList.js";
 import { displayTodayTasks } from "./app/today.js";
 import { createProjectNode, getProjectTitles } from "./app/projects.js";
@@ -186,6 +187,10 @@ export default class UI {
       }
 
       const tasks = todoLists[project];
+
+      if (project.toLowerCase() === "inbox") {
+        handleTodoListBackground(tasks);
+      }
 
       tasks.forEach((task) => {
         const newTask = new Task(

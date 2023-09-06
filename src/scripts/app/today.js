@@ -1,8 +1,10 @@
 import isToday from "date-fns/isToday";
-import { todoListContainer } from "../data/DOMselectors.js";
+import { todoListContainer, mainContent } from "../data/DOMselectors.js";
+import { handleTodoListBackground } from "./todoList.js";
 
 export function displayTodayTasks() {
   const tasks = [...todoListContainer.querySelectorAll(".task-card")];
+  handleTodoListBackground(tasks);
 
   tasks.forEach((task) => {
     const dueDate = task.querySelector("[data-due-date]").innerText;

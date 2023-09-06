@@ -22,3 +22,4 @@ export const template = document.querySelector("#task-template");
 export const projectTemplate = document.querySelector("#project-template");
 export const taskSaveButton = document.querySelector("#form-btn-save");
 export const leftMenu = document.querySelector("#left-menu");
+export const mainContent = document.querySelector("#main-content");

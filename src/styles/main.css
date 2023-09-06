@@ -270,6 +270,10 @@ div[data-project-title]{
     background-position: center;
 }
 
+.empty-task-list-background.inactive{
+    background-image: none;
+}
+
 #todo-list-container{
     flex-grow: 1;
     display: flex;

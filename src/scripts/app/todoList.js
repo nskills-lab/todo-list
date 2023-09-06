@@ -1,4 +1,8 @@
-import { todoListContainer, template } from "../data/DOMselectors.js";
+import {
+  todoListContainer,
+  template,
+  mainContent,
+} from "../data/DOMselectors.js";
 import { PRIORITY_COLOR_MAP, COLOR_PRIORITY_MAP } from "../data/priority.js";
 import { getProjectTitles } from "./projects.js";
 
@@ -23,6 +27,8 @@ export function createTaskNode(task) {
 
 export function loadCurrentProjectTasks(currentProjectTitle) {
   const tasks = [...todoListContainer.querySelectorAll(".task-card")];
+  const currentProjectTasks = getProjectTasks(currentProjectTitle);
+  handleTodoListBackground(currentProjectTasks);
 
   tasks.forEach((element) => {
     const classes = [...element.classList];
@@ -62,6 +68,21 @@ export function getTodoLists() {
   });
 
   return todoLists;
+}
+
+export function handleTodoListBackground(tasks) {
+  const classes = [...mainContent.classList];
+  console.log(classes);
+  console.log(tasks.length);
+  if (tasks.length !== 0) {
+    if (!classes.includes("inactive")) {
+      mainContent.classList.toggle("inactive");
+    }
+  } else {
+    if (classes.includes("inactive")) {
+      mainContent.classList.remove("inactive");
+    }
+  }
 }
 
 function getProjectTasks(projectTitle) {
