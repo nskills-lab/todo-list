@@ -303,6 +303,11 @@ div[data-project-title]{
 
 div[data-priority-color]{
     min-width: 10px;
+    margin-right: 3px;
+}
+
+#task-checkbox{
+    margin-right: 3px;
 }
 
 #task-checkbox:hover,
