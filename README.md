@@ -4,7 +4,7 @@
 
 Based on The Odin Project's assignment.
 
-Check out this live preview.
+[Check out this live preview](https://nskills-lab.github.io/todo-list/)
 
 ## Acknowledgements
 

@@ -185,7 +185,11 @@ export default class UI {
   }
 
   static loadAppFromLocalStorage() {
-    const todoLists = JSON.parse(getFromLocalStorage());
+    //console.log(getFromLocalStorage());
+    const storage = getFromLocalStorage();
+    console.log(storage);
+    if (!storage) return;
+    const todoLists = JSON.parse(storage);
     const projectLists = Object.keys(todoLists);
 
     projectLists.forEach((project) => {
