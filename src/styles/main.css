@@ -390,6 +390,7 @@ div[data-due-date]{
     background-color: inherit;
     border: none;
     outline:  none;
+    font-family: 'Barriecito', cursive;
 }
 
 #task-name{
@@ -409,6 +410,7 @@ div[data-due-date]{
 }
 
 #task-form-select-wrapper > *{
+    font-family: 'Barriecito', cursive;
     font-size: .9rem;
     color: var(--opaque-dark);
     background-color: inherit;
@@ -428,6 +430,7 @@ div[data-due-date]{
 }
 
 #task-buttons-wrapper{
+    font-family: 'Barriecito', cursive;
     display: flex;
     justify-content: center;
     align-items: center;
