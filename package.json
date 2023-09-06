@@ -1,12 +1,12 @@
 {
-  "name": "todo-list",
+  "name": "todo-list-app",
   "version": "1.0.0",
-  "description": "todo-list",
+  "description": "todo-list-app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "watch": "webpack --progress --watch"
+    "watch": "webpack --progress --watch",
+    "preview": "git subtree push --prefix dist origin gh-pages"
   },
   "keywords": [],
   "author": "Nina Umar",

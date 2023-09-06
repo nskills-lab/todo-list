@@ -1,5 +1,5 @@
 import isToday from "date-fns/isToday";
-import { todoListContainer, mainContent } from "../data/DOMselectors.js";
+import { todoListContainer } from "../data/DOMselectors.js";
 import { handleTodoListBackground } from "./todoList.js";
 
 export function displayTodayTasks() {
@@ -11,6 +11,7 @@ export function displayTodayTasks() {
 
     if (dueDate) {
       const [year, month, day] = dueDate.split("-");
+
       // month is 0 based
       const date = new Date(year, parseInt(month) - 1, day);
       let today = isToday(date);
