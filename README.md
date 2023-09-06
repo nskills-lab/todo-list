@@ -2,8 +2,6 @@
 
 ![Empty todo list page.](./src/images/empty-project.png)
 
-![Sample task view.](./src/images/sample-task.png)
-
 Based on The Odin Project's assignment.
 
 Check out this live preview.
