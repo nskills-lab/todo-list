@@ -3,7 +3,6 @@ import { getProjectTitles } from "./projects.js";
 import * as selectors from "../data/DOMselectors.js";
 import { COLOR_PRIORITY_MAP } from "../data/priority.js";
 import { generateID } from "../utility/utility.js";
-import "../../styles/main.css";
 
 export function createTask(id) {
   const name = selectors.nameElement.value.trim();
