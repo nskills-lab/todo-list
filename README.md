@@ -1,5 +1,13 @@
 # Project: Todo List App
 
+![Empty todo list page.](empty-project.png)
+
+![Sample task view.](sample-task.png)
+
+Based on The Odin Project's assignment.
+
+Check out this live preview.
+
 ## Acknowledgements
 
 - <a target="_blank" href="https://icons8.com/icon/80613/list">List</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
