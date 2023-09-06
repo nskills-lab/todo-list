@@ -1,6 +1,4 @@
-export function* idGenerator() {
-  let count = 1;
-  while (true) {
-    yield count++;
-  }
+import { v4 } from "uuid";
+export function generateID() {
+  return v4().split("-").at(-1);
 }

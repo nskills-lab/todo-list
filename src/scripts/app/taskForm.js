@@ -2,8 +2,7 @@ import Task from "./task.js";
 import { getProjectTitles } from "./projects.js";
 import * as selectors from "../data/DOMselectors.js";
 import { COLOR_PRIORITY_MAP } from "../data/priority.js";
-import { idGenerator } from "../utility/utility.js";
-const generator = idGenerator();
+import { generateID } from "../utility/utility.js";
 
 export function createTask(id) {
   const name = selectors.nameElement.value.trim();
@@ -11,7 +10,7 @@ export function createTask(id) {
   const date = selectors.dateElement.value.trim();
   const priority = selectors.priorityElement.value.trim() || "low";
   const project = selectors.projectElement.value.trim();
-  const taskId = id ?? generator.next().value.toString();
+  const taskId = id ?? generateID();
   const newTask = new Task(taskId, name, description, date, priority, project);
   return newTask;
 }

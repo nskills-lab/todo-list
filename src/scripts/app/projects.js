@@ -1,6 +1,5 @@
 import { projectTemplate, projectContainer } from "../data/DOMselectors.js";
-import { idGenerator } from "../utility/utility.js";
-const generator = idGenerator();
+import { generateID } from "../utility/utility.js";
 
 export function createProjectNode(title) {
   const project = projectFactory(title);
@@ -20,5 +19,5 @@ export function getProjectTitles() {
 }
 
 const projectFactory = (title) => {
-  return { id: generator.next().value.toString(), title };
+  return { id: generateID(), title };
 };
