@@ -19,5 +19,5 @@ export function getProjectTitles() {
 }
 
 const projectFactory = (title) => {
-  return { id: generateID(), title };
+  return { title, id: generateID() };
 };

@@ -62,7 +62,7 @@ export function updateProjectMenu(titles) {
   optionsToDel.forEach((option) => option.remove());
 
   titles.forEach((title) => {
-    let option = document.createElement("option");
+    const option = document.createElement("option");
     option.text = title;
     option.value = title;
     selectors.projectElement.add(option);
