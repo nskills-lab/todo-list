@@ -1,14 +1,14 @@
-import Task from "./task.js";
-import { getProjectTitles } from "./projects.js";
-import * as selectors from "../data/DOMselectors.js";
-import { COLOR_PRIORITY_MAP } from "../data/priority.js";
-import { generateID } from "../utility/utility.js";
+import Task from './task.js';
+import { getProjectTitles } from './projects.js';
+import * as selectors from '../data/DOMselectors.js';
+import { COLOR_PRIORITY_MAP } from '../data/priority.js';
+import { generateID } from '../utility/utility.js';
 
 export function createTask(id) {
   const name = selectors.nameElement.value.trim();
   const description = selectors.descriptionElement.value.trim();
   const date = selectors.dateElement.value.trim();
-  const priority = selectors.priorityElement.value.trim() || "low";
+  const priority = selectors.priorityElement.value.trim() || 'low';
   const project = selectors.projectElement.value.trim();
   const taskId = id ?? generateID();
   const newTask = new Task(taskId, name, description, date, priority, project);
@@ -19,11 +19,11 @@ export function resetForm() {
   if (selectors.taskForm.dataset.taskId) {
     delete selectors.taskForm.dataset.taskId;
   }
-  selectors.nameElement.value = "";
-  selectors.descriptionElement.value = "";
-  selectors.dateElement.value = "";
-  selectors.priorityElement.value = "";
-  selectors.projectElement.value = "";
+  selectors.nameElement.value = '';
+  selectors.descriptionElement.value = '';
+  selectors.dateElement.value = '';
+  selectors.priorityElement.value = '';
+  selectors.projectElement.value = '';
   selectors.taskSaveButton.disabled = true;
 }
 
@@ -33,16 +33,16 @@ export function autofill(taskId) {
   );
   selectors.taskForm.dataset.taskId = taskId;
   selectors.nameElement.value = task
-    .querySelector("[data-title]")
+    .querySelector('[data-title]')
     .innerText.trim();
   selectors.descriptionElement.value = task
-    .querySelector("[data-details]")
+    .querySelector('[data-details]')
     .innerText.trim();
 
   selectors.dateElement.value = task
-    .querySelector("[data-due-date]")
+    .querySelector('[data-due-date]')
     .innerText.trim();
-  const priorityColor = task.querySelector("[data-priority-color]").style
+  const priorityColor = task.querySelector('[data-priority-color]').style
     .backgroundColor;
   selectors.priorityElement.value = COLOR_PRIORITY_MAP.get(priorityColor);
   selectors.projectElement.value = task.dataset.project;
@@ -52,9 +52,9 @@ export function autofill(taskId) {
 }
 
 export function updateProjectMenu(titles) {
-  const reservedOptions = ["Inbox", "Project"];
+  const reservedOptions = ['Inbox', 'Project'];
   const optionsToDel = [
-    ...selectors.projectElement.querySelectorAll("option"),
+    ...selectors.projectElement.querySelectorAll('option'),
   ].filter((element) => {
     return !reservedOptions.includes(element.innerText);
   });
@@ -62,7 +62,7 @@ export function updateProjectMenu(titles) {
   optionsToDel.forEach((option) => option.remove());
 
   titles.forEach((title) => {
-    const option = document.createElement("option");
+    const option = document.createElement('option');
     option.text = title;
     option.value = title;
     selectors.projectElement.add(option);

@@ -1,4 +1,4 @@
-import { v4 } from "uuid";
+import { v4 } from 'uuid';
 export function generateID() {
-  return v4().split("-").at(-1);
+  return v4().split('-').at(-1);
 }
