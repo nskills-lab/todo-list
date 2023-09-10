@@ -1,10 +1,6 @@
-import {
-  todoListContainer,
-  template,
-  mainContent,
-} from '../data/DOMselectors.js';
-import { PRIORITY_COLOR_MAP, COLOR_PRIORITY_MAP } from '../data/priority.js';
-import { getProjectTitles } from './projects.js';
+import { todoListContainer, template, mainContent } from '../data/DOMselectors';
+import { PRIORITY_COLOR_MAP, COLOR_PRIORITY_MAP } from '../data/priority';
+import { getProjectTitles } from './projects';
 
 export function createTaskNode(task) {
   const elementExists = todoListContainer.querySelector(

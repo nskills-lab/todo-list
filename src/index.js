@@ -1,5 +1,5 @@
-import * as selectors from './scripts/data/DOMselectors.js';
-import UI from './scripts/UI.js';
+import * as selectors from './scripts/data/DOMselectors';
+import UI from './scripts/UI';
 import './styles/main.css';
 import './styles/normalize.css';
 

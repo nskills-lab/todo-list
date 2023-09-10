@@ -1,6 +1,6 @@
 import isToday from 'date-fns/isToday';
-import { todoListContainer } from '../data/DOMselectors.js';
-import { handleTodoListBackground } from './todoList.js';
+import { todoListContainer } from '../data/DOMselectors';
+import { handleTodoListBackground } from './todoList';
 
 export function displayTodayTasks() {
   const tasks = [...todoListContainer.querySelectorAll('.task-card')];

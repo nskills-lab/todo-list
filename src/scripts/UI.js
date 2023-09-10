@@ -3,18 +3,18 @@ import {
   resetForm,
   autofill,
   updateProjectMenu,
-} from './app/taskForm.js';
+} from './app/taskForm';
 import {
   createTaskNode,
   loadCurrentProjectTasks,
   deleteProjectTasks,
   getTodoLists,
-} from './app/todoList.js';
-import { displayTodayTasks } from './app/today.js';
-import { createProjectNode, getProjectTitles } from './app/projects.js';
-import * as selectors from './data/DOMselectors.js';
-import { saveToLocalStorage, getFromLocalStorage } from './app/localStorage.js';
-import Task from './app/task.js';
+} from './app/todoList';
+import { displayTodayTasks } from './app/today';
+import { createProjectNode, getProjectTitles } from './app/projects';
+import * as selectors from './data/DOMselectors';
+import { saveToLocalStorage, getFromLocalStorage } from './app/localStorage';
+import Task from './app/task';
 
 export default class UI {
   static handleTaskTitleInput() {

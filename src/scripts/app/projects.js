@@ -1,5 +1,5 @@
-import { projectTemplate, projectContainer } from '../data/DOMselectors.js';
-import { generateID } from '../utility/utility.js';
+import { projectTemplate, projectContainer } from '../data/DOMselectors';
+import { generateID } from '../utility/utility';
 
 export function createProjectNode(title) {
   const project = projectFactory(title);

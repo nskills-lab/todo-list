@@ -1,8 +1,8 @@
-import Task from './task.js';
-import { getProjectTitles } from './projects.js';
-import * as selectors from '../data/DOMselectors.js';
-import { COLOR_PRIORITY_MAP } from '../data/priority.js';
-import { generateID } from '../utility/utility.js';
+import Task from './task';
+import { getProjectTitles } from './projects';
+import * as selectors from '../data/DOMselectors';
+import { COLOR_PRIORITY_MAP } from '../data/priority';
+import { generateID } from '../utility/utility';
 
 export function createTask(id) {
   const name = selectors.nameElement.value.trim();
