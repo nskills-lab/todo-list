@@ -12,7 +12,7 @@ import {
 } from './app/todoList';
 import { displayTodayTasks } from './app/today';
 import { createProjectNode, getProjectTitles } from './app/projects';
-import * as selectors from './data/DOMselectors';
+import * as selectors from './data/DOMSelectors';
 import { saveToLocalStorage, getFromLocalStorage } from './app/localStorage';
 import Task from './app/Task';
 

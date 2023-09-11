@@ -1,6 +1,6 @@
 import Task from './Task';
 import { getProjectTitles } from './projects';
-import * as selectors from '../data/DOMselectors';
+import * as selectors from '../data/DOMSelectors';
 import { COLOR_PRIORITY_MAP } from '../data/priority';
 import { generateID } from '../utility/utility';
 

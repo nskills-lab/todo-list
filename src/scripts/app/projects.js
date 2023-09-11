@@ -1,4 +1,4 @@
-import { projectTemplate, projectContainer } from '../data/DOMselectors';
+import { projectTemplate, projectContainer } from '../data/DOMSelectors';
 import { generateID } from '../utility/utility';
 
 export function createProjectNode(title) {
