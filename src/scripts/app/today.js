@@ -1,5 +1,5 @@
 import isToday from 'date-fns/isToday';
-import { todoListContainer } from '../data/DOMselectors';
+import { todoListContainer } from '../data/DOMSelectors';
 import { handleTodoListBackground } from './todoList';
 
 export function displayTodayTasks() {

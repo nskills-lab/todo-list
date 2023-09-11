@@ -1,4 +1,4 @@
-import * as selectors from './scripts/data/DOMselectors';
+import * as selectors from './scripts/data/DOMSelectors';
 import UI from './scripts/UI';
 import './styles/main.css';
 import './styles/normalize.css';
