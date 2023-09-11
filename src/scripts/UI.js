@@ -14,7 +14,7 @@ import { displayTodayTasks } from './app/today';
 import { createProjectNode, getProjectTitles } from './app/projects';
 import * as selectors from './data/DOMselectors';
 import { saveToLocalStorage, getFromLocalStorage } from './app/localStorage';
-import Task from './app/task';
+import Task from './app/Task';
 
 export default class UI {
   static handleTaskTitleInput() {

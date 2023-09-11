@@ -1,4 +1,4 @@
-import Task from './task';
+import Task from './Task';
 import { getProjectTitles } from './projects';
 import * as selectors from '../data/DOMselectors';
 import { COLOR_PRIORITY_MAP } from '../data/priority';
