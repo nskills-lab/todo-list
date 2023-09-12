@@ -46,9 +46,9 @@ export function autofill(taskId) {
   const priorityColor = task.querySelector('[data-priority-color]').style
     .backgroundColor;
   selectors.priorityElement.value = COLOR_PRIORITY_MAP.get(priorityColor);
-  selectors.projectElement.value = task.dataset.project;
   const titles = getProjectTitles();
   updateProjectMenu(titles);
+  selectors.projectElement.value = task.dataset.project;
   selectors.taskSaveButton.disabled = false;
 }
 
